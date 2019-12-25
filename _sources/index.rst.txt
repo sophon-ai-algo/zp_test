@@ -42,39 +42,18 @@ Sophon Inference User Manual
      V2.0.1     2019.11.15   First official release
     ========== ============ ========================
 
-Getting Started
----------------
-.. toctree::
-   :glob:
-   :maxdepth: 3
 
-   get_start/0_products
-   get_start/1_crash_course
-   get_start/2_one_key_deploy-
-   get_start/3_introduction
-
-
-
-Practical Demos
----------------
 .. toctree::
    :glob:
    :maxdepth: 4
 
-   demo/0_preface
-   demo/1_resnet50
-   demo/2_ssd
-   demo/3_yolov3
-   demo/4_mtcnn
+   0_get_start
+   1_demo
+   2_module
 
-API Reference
--------------
-.. toctree::
-   :glob:
-   :maxdepth: 3
 
-   module/sail
-   module/sail_cpp
-   module/sail_python
+
+
+
 
 
