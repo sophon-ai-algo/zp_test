@@ -1,0 +1,1539 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SAIL C++ API &mdash; SophonInference  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SAIL Python API" href="sail_python.html" />
+    <link rel="prev" title="SAIL" href="sail.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SophonInference
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_start/products.html">Sophon Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_start/crash_course.html">Crash Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_start/practical_demos.html">Practical Demos</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/abstract.html">Introduction of  Sophon Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/install.html">Sophon Inference Installation</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="sail.html">SAIL</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SAIL C++ API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-function">Basic function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-type">Data type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handle">Handle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tensor">Tensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#iomode">IOMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#engine">Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bmimage">BMImage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decoder">Decoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bmcv">Bmcv</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sail_python.html">SAIL Python API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SophonInference</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>SAIL C++ API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/module/sail_cpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sail-c-api">
+<h1>SAIL C++ API<a class="headerlink" href="#sail-c-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basic-function">
+<h2>Basic function<a class="headerlink" href="#basic-function" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>1). get_available_tpu_num</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/** @brief Get the number of available TPUs.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  @return Number of available TPUs.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">get_available_tpu_num</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="data-type">
+<h2>Data type<a class="headerlink" href="#data-type" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>1). bm_data_type_t</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">bm_data_type_t</span> <span class="p">{</span>
+  <span class="n">BM_FLOAT32</span><span class="p">,</span>     <span class="c1">// float32</span>
+  <span class="n">BM_FLOAT16</span><span class="p">,</span>     <span class="c1">// not supported for now</span>
+  <span class="n">BM_INT8</span><span class="p">,</span>        <span class="c1">// int8</span>
+  <span class="n">BM_UINT8</span>        <span class="c1">// unsigned int8</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="handle">
+<h2>Handle<a class="headerlink" href="#handle" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>1). Handle Constructor</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Constructor using existed bm_handle_t.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle A bm_handle_t</span>
+<span class="cm"> */</span>
+<span class="n">Handle</span><span class="p">(</span><span class="n">bm_handle_t</span> <span class="n">handle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Constructor with device id.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param dev_id Device id</span>
+<span class="cm"> */</span>
+<span class="n">Handle</span><span class="p">(</span><span class="kt">int</span> <span class="n">dev_id</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>2). data</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> *  @brief Get inner bm_handle_t.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  @return Inner bm_handle_t</span>
+<span class="cm"> */</span>
+<span class="n">bm_handle_t</span> <span class="nf">data</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="tensor">
+<h2>Tensor<a class="headerlink" href="#tensor" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>1). Tensor Constructor</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Common constructor.</span>
+<span class="cm"> * @detail</span>
+<span class="cm"> *  case 0: only allocate system memory</span>
+<span class="cm"> *          (handle, shape, dtype, true, false)</span>
+<span class="cm"> *  case 1: only allocate device memory</span>
+<span class="cm"> *          (handle, shape, dtype, false, true)</span>
+<span class="cm"> *  case 2: allocate system memory and device memory</span>
+<span class="cm"> *          (handle, shape, dtype, true, true)</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle       Handle instance</span>
+<span class="cm"> * @param shape        Shape of the tensor</span>
+<span class="cm"> * @param own_sys_data Indicator of whether own system memory.</span>
+<span class="cm"> * @param own_dev_data Indicator of whether own device memory.</span>
+<span class="cm"> */</span>
+<span class="n">explicit</span> <span class="nf">Tensor</span><span class="p">(</span>
+    <span class="n">Handle</span>                  <span class="n">handle</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">shape</span><span class="p">,</span>
+    <span class="n">bm_data_type_t</span>          <span class="n">dtype</span><span class="p">,</span>
+    <span class="kt">bool</span>                    <span class="n">own_sys_data</span><span class="p">,</span>
+    <span class="kt">bool</span>                    <span class="n">own_dev_data</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> *  @brief Copy constructor.</span>
+<span class="cm"> *</span>
+<span class="cm"> *  @param tensor A Tensor instance</span>
+<span class="cm"> */</span>
+<span class="n">Tensor</span><span class="p">(</span><span class="k">const</span> <span class="n">Tensor</span><span class="o">&amp;</span> <span class="n">tensor</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>2). Tensor Assign Function</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Assignment function.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param tensor A Tensor instance</span>
+<span class="cm"> * @return A Tensor instance</span>
+<span class="cm"> */</span>
+<span class="n">Tensor</span><span class="o">&amp;</span> <span class="n">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Tensor</span><span class="o">&amp;</span> <span class="n">tensor</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>3). shape</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get shape of the tensor.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Shape of the tensor</span>
+<span class="cm"> */</span>
+<span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">shape</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>4). dtype</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get data type of the tensor.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Data type of the tensor</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">dtype</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>5). reshape</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Reset shape of the tensor.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param shape Shape of the tensor</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">reshape</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">shape</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>6). own_sys_data</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Judge if the tensor owns data in system memory.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return True for owns data in system memory.</span>
+<span class="cm"> */</span>
+<span class="kt">bool</span> <span class="nf">own_sys_data</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>7). own_dev_data</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Judge if the tensor owns data in device memory.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return True for owns data in device memory.</span>
+<span class="cm"> */</span>
+<span class="kt">bool</span> <span class="nf">own_dev_data</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>8). sys_data</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get data pointer in system memory of the tensor.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Data pointer in system memory of the tensor</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="o">*</span> <span class="nf">sys_data</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>9). dev_data</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get pointer to device memory of the tensor.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Pointer to device memory of the tensor</span>
+<span class="cm"> */</span>
+<span class="n">bm_device_mem_t</span><span class="o">*</span> <span class="nf">dev_data</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>10). reset_sys_data</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Reset data pointer in system memory of the tensor.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param data  Data pointer in system memory of the tensor</span>
+<span class="cm"> * @param shape Shape of the data</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">reset_sys_data</span><span class="p">(</span>
+    <span class="kt">void</span><span class="o">*</span>              <span class="n">data</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">shape</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>11). reset_dev_data</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Reset pointer to device memory of the tensor.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param data Pointer to device memory</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">reset_dev_data</span><span class="p">(</span><span class="n">bm_device_mem_t</span><span class="o">*</span> <span class="n">data</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>12). sync_s2d</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Copy data from system memory to device memory.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">sync_s2d</span><span class="p">();</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Copy data from system memory to device memory with specified size.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param size Byte size to be copied</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">sync_s2d</span><span class="p">(</span><span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>13). sync_d2s</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Copy data from device memory to system memory.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">sync_d2s</span><span class="p">();</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Copy data from device memory to system memory with specified size.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param size Byte size to be copied</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">sync_d2s</span><span class="p">(</span><span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>14). free</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Free system and device memroy of the tensor.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">free</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="iomode">
+<h2>IOMode<a class="headerlink" href="#iomode" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>1). IOMode</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">IOMode</span> <span class="p">{</span>
+  <span class="c1">/// Input tensors are in system memory while output tensors are</span>
+  <span class="c1">/// in device memory.</span>
+  <span class="n">SYSI</span><span class="p">,</span>
+  <span class="c1">/// Input tensors are in device memory while output tensors are</span>
+  <span class="c1">/// in system memory.</span>
+  <span class="n">SYSO</span><span class="p">,</span>
+  <span class="c1">/// Both input and output tensors are in system memory.</span>
+  <span class="n">SYSIO</span><span class="p">,</span>
+  <span class="c1">/// Both input and output tensors are in device memory.</span>
+  <span class="n">DEVIO</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="engine">
+<h2>Engine<a class="headerlink" href="#engine" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>1). Engine Constructor</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Constructor does not load bmodel.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param tpu_id TPU ID. You can use bm-smi to see available IDs.</span>
+<span class="cm"> */</span>
+ <span class="n">Engine</span><span class="p">(</span><span class="kt">int</span> <span class="n">tpu_id</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Constructor does not load bmodel.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle Handle created elsewhere.</span>
+<span class="cm"> */</span>
+<span class="n">Engine</span><span class="p">(</span><span class="k">const</span> <span class="n">Handle</span><span class="o">&amp;</span>   <span class="n">handle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Constructor loads bmodel from file.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param bmodel_path Path to bmodel</span>
+<span class="cm"> * @param tpu_id      TPU ID. You can use bm-smi to see available IDs.</span>
+<span class="cm"> * @param mode        Specify the input/output tensors are in system memory</span>
+<span class="cm"> *                   or device memory</span>
+<span class="cm"> */</span>
+<span class="n">Engine</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">bmodel_path</span><span class="p">,</span>
+    <span class="kt">int</span>                <span class="n">tpu_id</span><span class="p">,</span>
+    <span class="n">IOMode</span>             <span class="n">mode</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Constructor loads bmodel from file.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param bmodel_path Path to bmodel</span>
+<span class="cm"> * @param handle      Handle created elsewhere.</span>
+<span class="cm"> * @param mode        Specify the input/output tensors are in system memory</span>
+<span class="cm"> *                    or device memory</span>
+<span class="cm"> */</span>
+<span class="n">Engine</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">bmodel_path</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Handle</span><span class="o">&amp;</span>      <span class="n">handle</span><span class="p">,</span>
+    <span class="n">IOMode</span>             <span class="n">mode</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Constructor loads bmodel from system memory.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param bmodel_ptr  Pointer to bmodel in system memory</span>
+<span class="cm"> * @param bmodel_size Byte size of bmodel in system memory</span>
+<span class="cm"> * @param tpu_id      TPU ID. You can use bm-smi to see available IDs.</span>
+<span class="cm"> * @param mode        Specify the input/output tensors are in system memory</span>
+<span class="cm"> *                   or device memory</span>
+<span class="cm"> */</span>
+ <span class="n">Engine</span><span class="p">(</span>
+     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">bmodel_ptr</span><span class="p">,</span>
+     <span class="kt">size_t</span>      <span class="n">bmodel_size</span><span class="p">,</span>
+     <span class="kt">int</span>         <span class="n">tpu_id</span><span class="p">,</span>
+     <span class="n">IOMode</span>      <span class="n">mode</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Constructor loads bmodel from system memory.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param bmodel_ptr  Pointer to bmodel in system memory</span>
+<span class="cm"> * @param bmodel_size Byte size of bmodel in system memory</span>
+<span class="cm"> * @param handle      Handle created elsewhere.</span>
+<span class="cm"> * @param mode        Specify the input/output tensors are in system memory</span>
+<span class="cm"> *                    or device memory</span>
+<span class="cm"> */</span>
+<span class="n">Engine</span><span class="p">(</span>
+    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>        <span class="n">bmodel_ptr</span><span class="p">,</span>
+    <span class="kt">size_t</span>             <span class="n">bmodel_size</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">Handle</span><span class="o">&amp;</span>      <span class="n">handle</span><span class="p">,</span>
+    <span class="n">IOMode</span>             <span class="n">mode</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Copy constructor.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param other An other Engine instance.</span>
+<span class="cm"> */</span>
+<span class="n">Engine</span><span class="p">(</span><span class="k">const</span> <span class="n">Engine</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>2). Engine Assign Function</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Assignment function.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param other An other Engine instance.</span>
+<span class="cm"> * @return Reference of a Engine instance.</span>
+<span class="cm"> */</span>
+<span class="n">Engine</span><span class="o">&lt;</span><span class="n">Dtype</span><span class="o">&gt;&amp;</span> <span class="n">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Engine</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>3). get_handle</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get Handle instance.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Handle instance</span>
+<span class="cm"> */</span>
+<span class="n">Handle</span> <span class="nf">get_handle</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>4). load</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Load bmodel from file.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param bmodel_path Path to bmodel</span>
+<span class="cm"> * @return Program state</span>
+<span class="cm"> *     @retval true  Success</span>
+<span class="cm"> *     @retval false Failure</span>
+<span class="cm"> */</span>
+<span class="kt">bool</span> <span class="nf">load</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">bmodel_path</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Load bmodel from system memory.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param bmodel_ptr  Pointer to bmodel in system memory</span>
+<span class="cm"> * @param bmodel_size Byte size of bmodel in system memory</span>
+<span class="cm"> * @return Program state</span>
+<span class="cm"> *     @retval true  Success</span>
+<span class="cm"> *    @retval false Failure</span>
+<span class="cm"> */</span>
+<span class="kt">bool</span> <span class="nf">load</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">bmodel_ptr</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">bmodel_size</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>5). get_graph_names</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get all graph names in the loaded bomodels.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return All graph names</span>
+<span class="cm"> */</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">get_graph_names</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>6). set_io_mode</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Set IOMode for a graph.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name The specified graph name</span>
+<span class="cm"> * @param mode The specified IOMode</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">set_io_mode</span><span class="p">(</span>
+  <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">graph_name</span><span class="p">,</span>
+  <span class="n">IOMode</span>             <span class="n">mode</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>7). graph_is_dynamic</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Jugde if the graph is dynamic.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name The specified graph name</span>
+<span class="cm"> * @return 0 for dynamic and 1 for static</span>
+<span class="cm"> */</span>
+<span class="kt">bool</span> <span class="nf">graph_is_dynamic</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">graph_name</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>8). get_input_names</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get all input tensor names of the specified graph.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name The specified graph name</span>
+<span class="cm"> * @return All the input tensor names of the graph</span>
+<span class="cm"> */</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">get_input_names</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">graph_name</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>9). get_output_names</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get all output tensor names of the specified graph.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name The specified graph name</span>
+<span class="cm"> * @return All the output tensor names of the graph</span>
+<span class="cm"> */</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">get_output_names</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">graph_name</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>10). get_max_input_shapes</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get max shapes of input tensors in a graph.</span>
+<span class="cm"> *</span>
+<span class="cm"> * For static models, the max shape is fixed and it should not be changed.</span>
+<span class="cm"> * For dynamic models, the tensor shape should be smaller than or equal to</span>
+<span class="cm"> * the max shape.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name The specified graph name</span>
+<span class="cm"> * @return Max shape of input tensors</span>
+<span class="cm"> */</span>
+<span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">get_max_input_shapes</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">graph_name</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>11). get_input_shape</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get the shape of an input tensor in a graph.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name  The specified graph name</span>
+<span class="cm"> * @param tensor_name The specified tensor name</span>
+<span class="cm"> * @return The shape of the tensor</span>
+<span class="cm"> */</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">get_input_shape</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">graph_name</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">tensor_name</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>12). get_max_output_shapes</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get max shapes of output tensors in a graph.</span>
+<span class="cm"> *</span>
+<span class="cm"> * For static models, the max shape is fixed and it should not be changed.</span>
+<span class="cm"> * For dynamic models, the tensor shape should be smaller than or equal to</span>
+<span class="cm"> * the max shape.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name The specified graph name</span>
+<span class="cm"> * @return Max shape of output tensors</span>
+<span class="cm"> */</span>
+<span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">get_max_output_shapes</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">graph_name</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>13). get_output_shape</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get the shape of an output tensor in a graph.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name  The specified graph name</span>
+<span class="cm"> * @param tensor_name The specified tensor name</span>
+<span class="cm"> * @return The shape of the tensor</span>
+<span class="cm"> */</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">get_output_shape</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">graph_name</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">tensor_name</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>14). get_input_dtype</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get data type of an input tensor. Refer to bmdef.h as following.</span>
+<span class="cm"> *   typedef enum {</span>
+<span class="cm"> *     BM_FLOAT32 = 0,</span>
+<span class="cm"> *     BM_FLOAT16 = 1,</span>
+<span class="cm"> *     BM_INT8 = 2,</span>
+<span class="cm"> *     BM_UINT8 = 3,</span>
+<span class="cm"> *     BM_INT16 = 4,</span>
+<span class="cm"> *     BM_UINT16 = 5,</span>
+<span class="cm"> *     BM_INT32 = 6,</span>
+<span class="cm"> *     BM_UINT32 = 7</span>
+<span class="cm"> *   } bm_data_type_t;</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name  The specified graph name</span>
+<span class="cm"> * @param tensor_name The specified tensor name</span>
+<span class="cm"> * @return Data type of the input tensor</span>
+<span class="cm"> */</span>
+<span class="n">bm_data_type_t</span> <span class="nf">get_input_dtype</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">graph_name</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">tensor_name</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>15). get_output_dtype</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get data type of an output tensor. Refer to bmdef.h as following.</span>
+<span class="cm"> *   typedef enum {</span>
+<span class="cm"> *     BM_FLOAT32 = 0,</span>
+<span class="cm"> *     BM_FLOAT16 = 1,</span>
+<span class="cm"> *     BM_INT8 = 2,</span>
+<span class="cm"> *     BM_UINT8 = 3,</span>
+<span class="cm"> *     BM_INT16 = 4,</span>
+<span class="cm"> *     BM_UINT16 = 5,</span>
+<span class="cm"> *     BM_INT32 = 6,</span>
+<span class="cm"> *     BM_UINT32 = 7</span>
+<span class="cm"> *   } bm_data_type_t;</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name  The specified graph name</span>
+<span class="cm"> * @param tensor_name The specified tensor name</span>
+<span class="cm"> * @return Data type of the input tensor</span>
+<span class="cm"> */</span>
+<span class="n">bm_data_type_t</span> <span class="nf">get_output_dtype</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">graph_name</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">tensor_name</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>16). get_input_scale</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get scale of an input tensor. Only used for int8 models.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name  The specified graph name</span>
+<span class="cm"> * @param tensor_name The specified tensor name</span>
+<span class="cm"> * @return Scale of the input tensor</span>
+<span class="cm"> */</span>
+<span class="kt">float</span> <span class="nf">get_input_scale</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">graph_name</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">tensor_name</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>17). get_output_scale</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get scale of an output tensor. Only used for int8 models.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name  The specified graph name</span>
+<span class="cm"> * @param tensor_name The specified tensor name</span>
+<span class="cm"> * @return Scale of the output tensor</span>
+<span class="cm"> */</span>
+<span class="kt">float</span> <span class="nf">get_output_scale</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">graph_name</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">tensor_name</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>18). reshape</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Reshape input tensor for dynamic models.</span>
+<span class="cm"> *</span>
+<span class="cm"> * The input tensor shapes may change when running dynamic models.</span>
+<span class="cm"> * New input shapes should be set before inference.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name   The specified graph name</span>
+<span class="cm"> * @param input_shapes Specified shapes of all input tensors of the graph</span>
+<span class="cm"> * @return 0 for success and 1 for failure</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">reshape</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span>                       <span class="n">graph_name</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">input_shapes</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>19). get_input_tensor</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get the specified input tensor.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name  The specified graph name</span>
+<span class="cm"> * @param tensor_name The specified tensor name</span>
+<span class="cm"> * @return The specified input tensor</span>
+<span class="cm"> */</span>
+<span class="n">Tensor</span><span class="o">*</span> <span class="nf">get_input_tensor</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">graph_name</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">tensor_name</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>20). get_output_tensor</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get the specified output tensor.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name  The specified graph name</span>
+<span class="cm"> * @param tensor_name The specified tensor name</span>
+<span class="cm"> * @return The specified output tensor</span>
+<span class="cm"> */</span>
+<span class="n">Tensor</span><span class="o">*</span> <span class="nf">get_output_tensor</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">graph_name</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">tensor_name</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>21). scale_input_tensor</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Scale input tensor for int8 models.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name  The specified graph name</span>
+<span class="cm"> * @param tensor_name The specified tensor name</span>
+<span class="cm"> * @param data        Pointer to float data to be scaled</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">scale_input_tensor</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">graph_name</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">tensor_name</span><span class="p">,</span>
+    <span class="kt">float</span><span class="o">*</span>             <span class="n">data</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>22). scale_output_tensor</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Scale output tensor for int8 models.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name  The specified graph name</span>
+<span class="cm"> * @param tensor_name The specified tensor name</span>
+<span class="cm"> * @param data        Pointer to float data to be scaled</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">scale_output_tensor</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">graph_name</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">tensor_name</span><span class="p">,</span>
+    <span class="kt">float</span><span class="o">*</span>             <span class="n">data</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>23). scale_fp32_to_int8</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Scale data from float32 to int8. Only used for int8 models.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param src   Poniter to float32 data</span>
+<span class="cm"> * @param dst   Poniter to int8 data</span>
+<span class="cm"> * @param scale Value of scale</span>
+<span class="cm"> * @param size  Size of data</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">scale_fp32_to_int8</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span> <span class="n">src</span><span class="p">,</span> <span class="kt">int8_t</span><span class="o">*</span> <span class="n">dst</span><span class="p">,</span> <span class="kt">float</span> <span class="n">scale</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>24). scale_int8_to_fp32</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Scale data from int8 to float32. Only used for int8 models.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param src   Poniter to int8 data</span>
+<span class="cm"> * @param dst   Poniter to float32 data</span>
+<span class="cm"> * @param scale Value of scale</span>
+<span class="cm"> * @param size  Size of data</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">scale_int8_to_fp32</span><span class="p">(</span><span class="kt">int8_t</span><span class="o">*</span> <span class="n">src</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">dst</span><span class="p">,</span> <span class="kt">float</span> <span class="n">scale</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>25). process</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Inference with builtin input and output tensors.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name The specified graph name</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">process</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">graph_name</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Inference with provided input tensors.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name    The specified graph name</span>
+<span class="cm"> * @param input_shapes  Shapes of all input tensors</span>
+<span class="cm"> * @param input_tensors Data pointers of all input tensors in system memory</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">process</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span>                       <span class="n">graph_name</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">input_shapes</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="kt">void</span><span class="o">*&gt;&amp;</span>            <span class="n">input_tensors</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Inference with provided input and output tensors.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name The specified graph name</span>
+<span class="cm"> * @param input      Input tensors</span>
+<span class="cm"> * @param output     Output tensors</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">process</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span>              <span class="n">graph_name</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">Tensor</span><span class="o">*&gt;&amp;</span> <span class="n">input</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">Tensor</span><span class="o">*&gt;&amp;</span> <span class="n">output</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Inference with provided input and output tensors and input shapes.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param graph_name   The specified graph name</span>
+<span class="cm"> * @param input        Input tensors</span>
+<span class="cm"> * @param input_shapes Real input tensor shapes</span>
+<span class="cm"> * @param output       Output tensors</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">process</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span>                       <span class="n">graph_name</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">Tensor</span><span class="o">*&gt;&amp;</span>          <span class="n">input</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;&amp;</span> <span class="n">input_shapes</span><span class="p">,</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">Tensor</span><span class="o">*&gt;&amp;</span>          <span class="n">output</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="bmimage">
+<h2>BMImage<a class="headerlink" href="#bmimage" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>1). BMImage Constructor</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief The default Constructor.</span>
+<span class="cm"> */</span>
+<span class="n">BMImage</span><span class="p">();</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief The BMImage Constructor.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle A Handle instance</span>
+<span class="cm"> * @param h      Image width</span>
+<span class="cm"> * @param w      Image height</span>
+<span class="cm"> * @param format Image format</span>
+<span class="cm"> * @param dtype  Data type</span>
+<span class="cm"> */</span>
+<span class="n">BMImage</span><span class="p">(</span>
+    <span class="n">Handle</span><span class="o">&amp;</span>                  <span class="n">handle</span><span class="p">,</span>
+    <span class="kt">int</span>                      <span class="n">h</span><span class="p">,</span>
+    <span class="kt">int</span>                      <span class="n">w</span><span class="p">,</span>
+    <span class="n">bm_image_format_ext</span>      <span class="n">format</span><span class="p">,</span>
+    <span class="n">bm_image_data_format_ext</span> <span class="n">dtype</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>2). data</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get inner bm_image</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return The inner bm_image</span>
+<span class="cm"> */</span>
+<span class="n">bm_image</span><span class="o">&amp;</span> <span class="n">data</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>3). width</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get the img width.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return the width of img</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">width</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>4). height</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get the img height.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return the height of img</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">height</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>5). format</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get the img format.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return the format of img</span>
+<span class="cm"> */</span>
+<span class="n">bm_image_format_ext</span> <span class="nf">format</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="decoder">
+<h2>Decoder<a class="headerlink" href="#decoder" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>1). Decoder Constructor</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Constructor.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param file_path  Path or rtsp url to the video/image file.</span>
+<span class="cm"> * @param compressed Whether the format of decoded output is compressed NV12.</span>
+<span class="cm"> * @param tpu_id     ID of TPU, there may be more than one TPU for PCIE mode.</span>
+<span class="cm"> */</span>
+<span class="n">Decoder</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">file_path</span><span class="p">,</span>
+    <span class="kt">bool</span>               <span class="n">compressed</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span>
+    <span class="kt">int</span>                <span class="n">tpu_id</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>2). is_opened</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Judge if the source is opened successfully.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return True if the source is opened successfully</span>
+<span class="cm"> */</span>
+<span class="kt">bool</span> <span class="nf">is_opened</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>3). read</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Read a bm_image from the Decoder.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle A bm_handle_t instance</span>
+<span class="cm"> * @param image Reference of bm_image to be read to</span>
+<span class="cm"> * @return 0 for success and 1 for failure</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">read</span><span class="p">(</span><span class="n">Handle</span><span class="o">&amp;</span> <span class="n">handle</span><span class="p">,</span> <span class="n">bm_image</span><span class="o">&amp;</span> <span class="n">image</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Read a BMImage from the Decoder.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle A bm_handle_t instance</span>
+<span class="cm"> * @param image Reference of BMImage to be read to</span>
+<span class="cm"> * @return 0 for success and 1 for failure</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">read</span><span class="p">(</span><span class="n">Handle</span><span class="o">&amp;</span> <span class="n">handle</span><span class="p">,</span> <span class="n">BMImage</span><span class="o">&amp;</span> <span class="n">image</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="bmcv">
+<h2>Bmcv<a class="headerlink" href="#bmcv" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt><strong>1). Bmcv Constructor</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Constructor.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle A Handle instance</span>
+<span class="cm"> */</span>
+<span class="n">explicit</span> <span class="nf">Bmcv</span><span class="p">(</span><span class="n">Handle</span> <span class="n">handle</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>2). bm_image_to_tensor</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Convert BMImage to tensor.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param img    Input image</span>
+<span class="cm"> * @param tensor Output tensor</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">bm_image_to_tensor</span><span class="p">(</span><span class="n">BMImage</span> <span class="o">&amp;</span><span class="n">img</span><span class="p">,</span> <span class="n">Tensor</span> <span class="o">&amp;</span><span class="n">tensor</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Convert BMImage to tensor.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param img Input image</span>
+<span class="cm"> */</span>
+<span class="n">Tensor</span> <span class="nf">bm_image_to_tensor</span><span class="p">(</span><span class="n">BMImage</span> <span class="o">&amp;</span><span class="n">img</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>3). tensor_to_bm_image</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Convert tensor to BMImage.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param tensor   Input tensor</span>
+<span class="cm"> * @param img      Output image</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">tensor_to_bm_image</span><span class="p">(</span><span class="n">Tensor</span> <span class="o">&amp;</span><span class="n">tensor</span><span class="p">,</span> <span class="n">BMImage</span> <span class="o">&amp;</span><span class="n">img</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Convert tensor to BMImage.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param tensor   Input tensor</span>
+<span class="cm"> */</span>
+<span class="n">BMImage</span> <span class="nf">tensor_to_bm_image</span><span class="p">(</span><span class="n">Tensor</span> <span class="o">&amp;</span><span class="n">tensor</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>4). crop_and_resize</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Crop then resize an image.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @param output   Output image</span>
+<span class="cm"> * @param crop_x0  Start point x of the crop window</span>
+<span class="cm"> * @param crop_y0  Start point y of the crop window</span>
+<span class="cm"> * @param crop_w   Width of the crop window</span>
+<span class="cm"> * @param crop_h   Height of the crop window</span>
+<span class="cm"> * @param resize_w Target width</span>
+<span class="cm"> * @param resize_h Target height</span>
+<span class="cm"> * @return 0 for success and other for failure</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">crop_and_resize</span><span class="p">(</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">output</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_x0</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_y0</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_w</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_h</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">resize_w</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">resize_h</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Crop then resize an image.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @param crop_x0  Start point x of the crop window</span>
+<span class="cm"> * @param crop_y0  Start point y of the crop window</span>
+<span class="cm"> * @param crop_w   Width of the crop window</span>
+<span class="cm"> * @param crop_h   Height of the crop window</span>
+<span class="cm"> * @param resize_w Target width</span>
+<span class="cm"> * @param resize_h Target height</span>
+<span class="cm"> * @return Output image</span>
+<span class="cm"> */</span>
+<span class="n">BMImage</span> <span class="nf">crop_and_resize</span><span class="p">(</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_x0</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_y0</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_w</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_h</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">resize_w</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">resize_h</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>5). crop</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Crop an image with given window.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @param output   Output image</span>
+<span class="cm"> * @param crop_x0  Start point x of the crop window</span>
+<span class="cm"> * @param crop_y0  Start point y of the crop window</span>
+<span class="cm"> * @param crop_w   Width of the crop window</span>
+<span class="cm"> * @param crop_h   Height of the crop window</span>
+<span class="cm"> * @return 0 for success and other for failure</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">crop</span><span class="p">(</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">output</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_x0</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_y0</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_w</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_h</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Crop an image with given window.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @param crop_x0  Start point x of the crop window</span>
+<span class="cm"> * @param crop_y0  Start point y of the crop window</span>
+<span class="cm"> * @param crop_w   Width of the crop window</span>
+<span class="cm"> * @param crop_h   Height of the crop window</span>
+<span class="cm"> * @return Output image</span>
+<span class="cm"> */</span>
+ <span class="n">BMImage</span> <span class="nf">crop</span><span class="p">(</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_x0</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_y0</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_w</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_h</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>6). resize</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Resize an image with interpolation of INTER_NEAREST.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @param output   Output image</span>
+<span class="cm"> * @param resize_w Target width</span>
+<span class="cm"> * @param resize_h Target height</span>
+<span class="cm"> * @return 0 for success and other for failure</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">resize</span><span class="p">(</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">output</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">resize_w</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">resize_h</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Resize an image with interpolation of INTER_NEAREST.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @param resize_w Target width</span>
+<span class="cm"> * @param resize_h Target height</span>
+<span class="cm"> * @return Output image</span>
+<span class="cm"> */</span>
+<span class="n">BMImage</span> <span class="nf">resize</span><span class="p">(</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">resize_w</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">resize_h</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>7). vpp_crop_and_resize</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Crop then resize an image using vpp.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @param output   Output image</span>
+<span class="cm"> * @param crop_x0  Start point x of the crop window</span>
+<span class="cm"> * @param crop_y0  Start point y of the crop window</span>
+<span class="cm"> * @param crop_w   Width of the crop window</span>
+<span class="cm"> * @param crop_h   Height of the crop window</span>
+<span class="cm"> * @param resize_w Target width</span>
+<span class="cm"> * @param resize_h Target height</span>
+<span class="cm"> * @return 0 for success and other for failure</span>
+<span class="cm"> */</span>
+ <span class="kt">int</span> <span class="nf">vpp_crop_and_resize</span><span class="p">(</span>
+     <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+     <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">output</span><span class="p">,</span>
+     <span class="kt">int</span>                          <span class="n">crop_x0</span><span class="p">,</span>
+     <span class="kt">int</span>                          <span class="n">crop_y0</span><span class="p">,</span>
+     <span class="kt">int</span>                          <span class="n">crop_w</span><span class="p">,</span>
+     <span class="kt">int</span>                          <span class="n">crop_h</span><span class="p">,</span>
+     <span class="kt">int</span>                          <span class="n">resize_w</span><span class="p">,</span>
+     <span class="kt">int</span>                          <span class="n">resize_h</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Crop then resize an image using vpp.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @param crop_x0  Start point x of the crop window</span>
+<span class="cm"> * @param crop_y0  Start point y of the crop window</span>
+<span class="cm"> * @param crop_w   Width of the crop window</span>
+<span class="cm"> * @param crop_h   Height of the crop window</span>
+<span class="cm"> * @param resize_w Target width</span>
+<span class="cm"> * @param resize_h Target height</span>
+<span class="cm"> * @return Output image</span>
+<span class="cm"> */</span>
+ <span class="n">BMImage</span> <span class="nf">vpp_crop_and_resize</span><span class="p">(</span>
+     <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+     <span class="kt">int</span>                          <span class="n">crop_x0</span><span class="p">,</span>
+     <span class="kt">int</span>                          <span class="n">crop_y0</span><span class="p">,</span>
+     <span class="kt">int</span>                          <span class="n">crop_w</span><span class="p">,</span>
+     <span class="kt">int</span>                          <span class="n">crop_h</span><span class="p">,</span>
+     <span class="kt">int</span>                          <span class="n">resize_w</span><span class="p">,</span>
+     <span class="kt">int</span>                          <span class="n">resize_h</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>8). vpp_crop</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Crop an image with given window using vpp.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @param output   Output image</span>
+<span class="cm"> * @param crop_x0  Start point x of the crop window</span>
+<span class="cm"> * @param crop_y0  Start point y of the crop window</span>
+<span class="cm"> * @param crop_w   Width of the crop window</span>
+<span class="cm"> * @param crop_h   Height of the crop window</span>
+<span class="cm"> * @return 0 for success and other for failure</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">vpp_crop</span><span class="p">(</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">output</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_x0</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_y0</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_w</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_h</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Crop an image with given window using vpp.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @param crop_x0  Start point x of the crop window</span>
+<span class="cm"> * @param crop_y0  Start point y of the crop window</span>
+<span class="cm"> * @param crop_w   Width of the crop window</span>
+<span class="cm"> * @param crop_h   Height of the crop window</span>
+<span class="cm"> * @return Output image</span>
+<span class="cm"> */</span>
+<span class="n">BMImage</span> <span class="nf">vpp_crop</span><span class="p">(</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_x0</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_y0</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_w</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">crop_h</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>9). vpp_resize</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Resize an image with interpolation of INTER_NEAREST using vpp.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @param output   Output image</span>
+<span class="cm"> * @param resize_w Target width</span>
+<span class="cm"> * @param resize_h Target height</span>
+<span class="cm"> * @return 0 for success and other for failure</span>
+<span class="cm"> */</span>
+ <span class="kt">int</span> <span class="nf">vpp_resize</span><span class="p">(</span>
+     <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+     <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">output</span><span class="p">,</span>
+     <span class="kt">int</span>                          <span class="n">resize_w</span><span class="p">,</span>
+     <span class="kt">int</span>                          <span class="n">resize_h</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Resize an image with interpolation of INTER_NEAREST using vpp.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @param resize_w Target width</span>
+<span class="cm"> * @param resize_h Target height</span>
+<span class="cm"> * @return Output image</span>
+<span class="cm"> */</span>
+<span class="n">BMImage</span> <span class="nf">vpp_resize</span><span class="p">(</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">resize_w</span><span class="p">,</span>
+    <span class="kt">int</span>                          <span class="n">resize_h</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>10). warp</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Applies an affine transformation to an image.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @param output   Output image</span>
+<span class="cm"> * @param matrix   2x3 transformation matrix</span>
+<span class="cm"> * @return 0 for success and other for failure</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">warp</span><span class="p">(</span>
+    <span class="n">BMImage</span>                            <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+    <span class="n">BMImage</span>                            <span class="o">&amp;</span><span class="n">output</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;&gt;</span> <span class="o">&amp;</span><span class="n">matrix</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Applies an affine transformation to an image.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @param matrix   2x3 transformation matrix</span>
+<span class="cm"> * @return Output image</span>
+<span class="cm"> */</span>
+<span class="n">BMImage</span> <span class="nf">warp</span><span class="p">(</span>
+    <span class="n">BMImage</span>                            <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;&gt;</span> <span class="o">&amp;</span><span class="n">matrix</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>11). convert_to</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Applies a linear transformation to an image.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input        Input image</span>
+<span class="cm"> * @param output       Output image</span>
+<span class="cm"> * @param alpha_beta   (a0, b0), (a1, b1), (a2, b2) factors</span>
+<span class="cm"> * @return 0 for success and other for failure</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">convert_to</span><span class="p">(</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">output</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;&gt;</span>   <span class="o">&amp;</span><span class="n">alpha_beta</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Applies a linear transformation to an image.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input        Input image</span>
+<span class="cm"> * @param alpha_beta   (a0, b0), (a1, b1), (a2, b2) factors</span>
+<span class="cm"> * @return Output image</span>
+<span class="cm"> */</span>
+<span class="n">BMImage</span> <span class="nf">convert_to</span><span class="p">(</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;</span><span class="p">,</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="kt">float</span><span class="o">&gt;&gt;</span>   <span class="o">&amp;</span><span class="n">alpha_beta</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>12). yuv2bgr</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Convert an image from YUV to BGR.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @param output   Output image</span>
+<span class="cm"> * @return 0 for success and other for failure</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">yuv2bgr</span><span class="p">(</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+    <span class="n">BMImage</span>                      <span class="o">&amp;</span><span class="n">output</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Convert an image from YUV to BGR.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @return Output image</span>
+<span class="cm"> */</span>
+<span class="n">BMImage</span> <span class="nf">yuv2bgr</span><span class="p">(</span><span class="n">BMImage</span>  <span class="o">&amp;</span><span class="n">input</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>13). vpp_convert</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Convert an image to BGR PLANAR format using vpp.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @param output   Output image</span>
+<span class="cm"> * @return 0 for success and other for failure</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">vpp_convert</span><span class="p">(</span>
+    <span class="n">BMImage</span>  <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+    <span class="n">BMImage</span>  <span class="o">&amp;</span><span class="n">output</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Convert an image to BGR PLANAR format using vpp.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @return Output image</span>
+<span class="cm"> */</span>
+<span class="n">BMImage</span> <span class="nf">vpp_convert</span><span class="p">(</span><span class="n">BMImage</span>  <span class="o">&amp;</span><span class="n">input</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>14). convert</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Convert an image to BGR PLANAR format.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @param output   Output image</span>
+<span class="cm"> * @return 0 for success and other for failure</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">convert</span><span class="p">(</span>
+    <span class="n">BMImage</span>  <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span>
+    <span class="n">BMImage</span>  <span class="o">&amp;</span><span class="n">output</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Convert an image to BGR PLANAR format.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param input    Input image</span>
+<span class="cm"> * @return Output image</span>
+<span class="cm"> */</span>
+<span class="n">BMImage</span> <span class="nf">convert</span><span class="p">(</span><span class="n">BMImage</span>  <span class="o">&amp;</span><span class="n">input</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>15). rectangle</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Draw a rectangle on input image.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param image      Input image</span>
+<span class="cm"> * @param x0         Start point x of rectangle</span>
+<span class="cm"> * @param y0         Start point y of rectangle</span>
+<span class="cm"> * @param w          Width of rectangle</span>
+<span class="cm"> * @param h          Height of rectangle</span>
+<span class="cm"> * @param color      Color of rectangle</span>
+<span class="cm"> * @param thickness  Thickness of rectangle</span>
+<span class="cm"> * @return 0 for success and other for failure</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">rectangle</span><span class="p">(</span>
+    <span class="n">BMImage</span>                         <span class="o">&amp;</span><span class="n">image</span><span class="p">,</span>
+    <span class="kt">int</span>                             <span class="n">x0</span><span class="p">,</span>
+    <span class="kt">int</span>                             <span class="n">y0</span><span class="p">,</span>
+    <span class="kt">int</span>                             <span class="n">w</span><span class="p">,</span>
+    <span class="kt">int</span>                             <span class="n">h</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">color</span><span class="p">,</span>
+    <span class="kt">int</span>                             <span class="n">thickness</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>16). imwrite</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Save the image to the specified file.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param filename   Name of the file</span>
+<span class="cm"> * @param image      Image to be saved</span>
+<span class="cm"> * @return 0 for success and other for failure</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">imwrite</span><span class="p">(</span>
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">filename</span><span class="p">,</span>
+    <span class="n">BMImage</span>           <span class="o">&amp;</span><span class="n">image</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+<dt><strong>17). get_handle</strong></dt>
+<dd><div class="first last highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @brief Get Handle instance.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return Handle instance</span>
+<span class="cm"> */</span>
+<span class="n">Handle</span> <span class="nf">get_handle</span><span class="p">();</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sail_python.html" class="btn btn-neutral float-right" title="SAIL Python API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sail.html" class="btn btn-neutral float-left" title="SAIL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sophon
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

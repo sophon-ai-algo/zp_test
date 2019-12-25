@@ -1,0 +1,17 @@
+Practical Demos
+===============
+
+classification with resnet
+__________________________
+
+
+detection with ssd
+__________________
+
+
+detection with yolov3
+_____________________
+
+
+detection with mtcnn
+____________________

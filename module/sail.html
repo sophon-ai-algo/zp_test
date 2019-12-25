@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SAIL &mdash; SophonInference  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SAIL C++ API" href="sail_cpp.html" />
+    <link rel="prev" title="Sophon Inference Installation" href="../introduction/install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SophonInference
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_start/products.html">Sophon Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_start/crash_course.html">Crash Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_start/practical_demos.html">Practical Demos</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/abstract.html">Introduction of  Sophon Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/install.html">Sophon Inference Installation</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SAIL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sail_cpp.html">SAIL C++ API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sail_python.html">SAIL Python API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SophonInference</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>SAIL</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/module/sail.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sail">
+<h1>SAIL<a class="headerlink" href="#sail" title="Permalink to this headline">¶</a></h1>
+<p>SAIL is the core module in the Sophon Inference.</p>
+<p>SAIL encapsulates BMRuntime, BMDecoder, BMCV, and BMLib in BMNNSDK.
+It abstracts the original functions in BMNNSDK such as “loading bmodel and driving TPU reasoning”,
+“Drive TPU for image processing”, “Drive VPU for image and video decoding” into simpler C++ interfaces for external use.
+And it re-encapsulate with pybind11, providing the most compact Python interfaces.</p>
+<p>Currently, all classes, enumerations, and functions in the SAIL module are in the “sail” namespace.
+The documentation in this module provides an in-depth look at the modules and classes in SAIL that you might use.</p>
+<p>The core classes include:</p>
+<ul class="simple">
+<li>Handle:</li>
+</ul>
+<p>The wrapper class of bm_handle_t in BMLib.
+Contains device handles, contextual information, used to interact with the kernel driver information of TPU.</p>
+<ul class="simple">
+<li>Tensor:</li>
+</ul>
+<p>BMLib wrapper class that encapsulates management of device memroy and synchronization with system memory.</p>
+<ul class="simple">
+<li>Engine：</li>
+</ul>
+<p>The wrapper class of BMRuntime, which loads bmodel and drives the TPU for reasoning.
+An Instance of Engine can load an arbitrary bmodel.
+The memory corresponding to the input tensor and the output tensor is automatically managed.</p>
+<ul class="simple">
+<li>Decoder:</li>
+</ul>
+<p>Decoder to decode videos by VPU and images by JPU.</p>
+<ul class="simple">
+<li>Bmcv：</li>
+</ul>
+<p>It encapsulates a series of image processing functions that can drive the TPU for image processing.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sail_cpp.html" class="btn btn-neutral float-right" title="SAIL C++ API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../introduction/install.html" class="btn btn-neutral float-left" title="Sophon Inference Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sophon
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

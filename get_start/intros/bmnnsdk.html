@@ -1,0 +1,250 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>BMNNSDK &mdash; SophonInference  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Sophon Inference" href="si.html" />
+    <link rel="prev" title="Model deployment" href="deploy.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> SophonInference
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../0_products.html">Sophon Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_crash_course.html">Crash Course</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../3_introduction.html">Introduction</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="deploy.html">Model deployment</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">BMNNSDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="si.html">Sophon Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html">Sophon Inference Installation</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../demo/0_preface.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demo/1_resnet50.html">Classification with Resnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demo/2_ssd.html">Detection with SSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demo/3_yolov3.html">Detection with Yolov3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demo/4_mtcnn.html">Detection with MTCNN</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail.html">SAIL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail_cpp.html">SAIL C++ API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail_python.html">SAIL Python API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SophonInference</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../3_introduction.html">Introduction</a> &raquo;</li>
+        
+      <li>BMNNSDK</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/get_start/intros/bmnnsdk.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bmnnsdk">
+<h1>BMNNSDK<a class="headerlink" href="#bmnnsdk" title="Permalink to this headline">¶</a></h1>
+<p>BMNNSDK is the original deep learning development toolkit of Bitmain.
+It is mainly composed of modules such as Quantization &amp; Calibration Tool, BMCompiler, BMDriver, BMLib, BMDecoder, BMCV, BMRuntime.</p>
+<p><strong>Quantization &amp; Calibration Tool</strong>
+:It can quantize the model of FP32 precision generated by your training to INT8 precision model,
+which is equal to the process of converting fp32_umodel to int8_umodel in the above figure.</p>
+<p>Online doc: <a class="reference external" href="https://sophon-ai-algo.github.io/calibration_tools-doc/">https://sophon-ai-algo.github.io/calibration_tools-doc/</a></p>
+<p><strong>BMCompiler</strong>
+:It is a set of model compilation tools that compile your trained deep learning model into a collection of instructions that can be loaded and executed by the Sophon TPU,
+and save these instructions in a file with the suffix “bmodel”.
+The tool supports compiling the FP32 model directly into bmodel.
+It also supports compiling the INT8 model generated by Quantization &amp; Calibration Tool to bmodel.</p>
+<p>Online doc: <a class="reference external" href="https://sophon-ai-algo.github.io/bmnnsdk-doc/">https://sophon-ai-algo.github.io/bmnnsdk-doc/</a></p>
+<p><strong>BMDriver</strong>
+:It is the driver for the Sophon TPU and is installed into your operating system kernel in an “insmod” manner.</p>
+<p><strong>BMLib</strong>
+:Provides basic interfaces, which can control TPU memory.</p>
+<p>Online doc: <a class="reference external" href="https://sophon-ai-algo.github.io/bmlib_1684-doc/">https://sophon-ai-algo.github.io/bmlib_1684-doc/</a></p>
+<p><strong>BMDecoder</strong>
+:Provides interfaces which used to decode/encode image/video.</p>
+<p>Online doc: <a class="reference external" href="https://sophon-ai-algo.github.io/bm_multimedia/">https://sophon-ai-algo.github.io/bm_multimedia/</a></p>
+<p><strong>BMCV</strong>
+:It can drive TPU for image processing and tensor calculations.</p>
+<p>Online doc: <a class="reference external" href="https://sophon-ai-algo.github.io/bmcv_1684-doc/">https://sophon-ai-algo.github.io/bmcv_1684-doc/</a></p>
+<p><strong>BMRuntime</strong>
+:It provides interfaces to load the “bmodel” file onto the Sophon TPU and drive the TPU chip to implement reasoning.</p>
+<p>Online doc: <a class="reference external" href="https://sophon-ai-algo.github.io/bmnnsdk-doc/">https://sophon-ai-algo.github.io/bmnnsdk-doc/</a></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="si.html" class="btn btn-neutral float-right" title="Sophon Inference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="deploy.html" class="btn btn-neutral float-left" title="Model deployment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sophon
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

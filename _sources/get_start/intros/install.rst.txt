@@ -1,0 +1,45 @@
+Sophon Inference Installation
+_____________________________
+
+For different application scenarios, BITMAIN provides PCIE and SOC based on the BM168x chip, which corresponds to two different running modes:
+
+* PCIE mode: The SDK runs on the X86 platform, and the BM168x acts as a deep learning acceleration card for the PCIE interface.
+* SOC mode: The SDK runs independently on the BM168x platform and supports connection to other devices via Gigabit Ethernet.
+
+
+BMNNSDK supports the above two modes of operation and is fully compatible on the application interface.
+Please download the corresponding BMNNSDK to install according to the product form and requirements.
+It should be noted that in SOC mode, the BMCompiler module is not included in the BMNNSDK.
+You can use BMCompiler to complete offline compilation of the model in PCIE mode (no need to install SC3 accelerator card).
+The compiled bmodel can be loaded and run in SOC mode.
+
+Currently SophonInference supports PCIE mode, and the SOC mode.
+For SOC mode, Sophon Inference has already pre-installed on Sophon SE3.
+Including SAIL(cpp) and SAIL/AutoRunner/Algokit(python3).
+For PCIE mode, Sophon Inference has also provided SAIL(cpp) and SAIL(python3).
+
+
+PCIE mode
+^^^^^^^^^
+
+**a).Requirements**
+
+Hardware Environment: X86 host with Sophon SC3/SC5 accelerator card installed.
+
+Operating System: Ubuntu/CentOS/Debian.
+
+Software Environment: : BMNNSDK with PCIE mode installed.
+
+**b).Installation**
+
+    .. code-block:: shell
+       
+       # Install the python module of Sophon Inference.
+       cd ${sophon_inference}/python3/x86
+       pip3 install sophon_x86-2.0.0-py3-none-any.whl --user
+
+SOC mode
+^^^^^^^^
+
+Already installed.
+

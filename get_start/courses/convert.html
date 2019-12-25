@@ -1,0 +1,248 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>convert tensorflow frozen model to bmodel using bmnett &mdash; SophonInference  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="deploy bmodel on Sophon SC5 using sail" href="deploy.html" />
+    <link rel="prev" title="install BMNNSDK2 and Sophon-Inference on PC with SC5" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> SophonInference
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../0_products.html">Sophon Products</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../1_crash_course.html">Crash Course</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="install.html">install BMNNSDK2 and Sophon-Inference on PC with SC5</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">convert tensorflow frozen model to bmodel using bmnett</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deploy.html">deploy bmodel on Sophon SC5 using sail</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../3_introduction.html">Introduction</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../demo/0_preface.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demo/1_resnet50.html">Classification with Resnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demo/2_ssd.html">Detection with SSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demo/3_yolov3.html">Detection with Yolov3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demo/4_mtcnn.html">Detection with MTCNN</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail.html">SAIL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail_cpp.html">SAIL C++ API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail_python.html">SAIL Python API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SophonInference</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../1_crash_course.html">Crash Course</a> &raquo;</li>
+        
+      <li>convert tensorflow frozen model to bmodel using bmnett</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/get_start/courses/convert.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="convert-tensorflow-frozen-model-to-bmodel-using-bmnett">
+<h1>convert tensorflow frozen model to bmodel using bmnett<a class="headerlink" href="#convert-tensorflow-frozen-model-to-bmodel-using-bmnett" title="Permalink to this headline">¶</a></h1>
+<p>We have already uploaded the official tensorflow frozen model of mobilenetv1 on our website, just “wget” it!</p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>wget https://sophon-file.bitmain.com.cn/sophon-prod/model/19/05/28/mobilenetv1_tf.tar.gz
+tar -zxvf mobilenetv1_tf.tar.gz
+</pre></div>
+</div>
+</div></blockquote>
+<p>Then, convert tensorflow frozen model to bmodel using bmnett, as follow script:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="kn">import</span> <span class="nn">bmnett</span>
+
+<span class="n">model_path</span> <span class="o">=</span> <span class="s2">&quot;mobilenetv1.pb&quot;</span>  <span class="c1"># path of tensorflow frozen model, which to be converted.</span>
+<span class="n">outdir</span> <span class="o">=</span> <span class="s2">&quot;bmodel/&quot;</span>             <span class="c1"># path of the generated bmodel.</span>
+<span class="n">target</span> <span class="o">=</span> <span class="s2">&quot;BM1684&quot;</span>              <span class="c1"># targeted TPU platform, BM1684 or BM1682.</span>
+<span class="n">input_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">]</span>        <span class="c1"># input operation names.</span>
+<span class="n">output_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MobilenetV1/Predictions/Reshape_1&quot;</span><span class="p">]</span>  <span class="c1"># output operation names.</span>
+<span class="n">shapes</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>    <span class="c1"># input shapes.</span>
+<span class="n">net_name</span> <span class="o">=</span> <span class="s2">&quot;mobilenetv1&quot;</span>       <span class="c1"># name of the generated bmodel.</span>
+
+<span class="n">bmnett</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span> <span class="n">outdir</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">input_names</span><span class="p">,</span> <span class="n">output_names</span><span class="p">,</span> <span class="n">shapes</span><span class="o">=</span><span class="n">shapes</span><span class="p">,</span> <span class="n">net_name</span><span class="o">=</span><span class="n">net_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>After conversion, a bmodel named “compilation.bmodel” will generated under ${outdir}.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="deploy.html" class="btn btn-neutral float-right" title="deploy bmodel on Sophon SC5 using sail" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral float-left" title="install BMNNSDK2 and Sophon-Inference on PC with SC5" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sophon
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

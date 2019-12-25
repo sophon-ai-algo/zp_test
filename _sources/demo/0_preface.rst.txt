@@ -1,0 +1,51 @@
+Preface
+=======
+We prepared several demos to let you get familiar with Sophon-Inference more quickly.
+They are a classification demo(resnet-50) and three detection demos(ssd, yolov3, mtcnn).
+For each demo, we implemented different cases to adapt to multiple applications.
+
+
+The difference among cases in a demo
+____________________________________
+Each case differed from others among the parameters below.
+
+*ID:* the number of the case in this demo.
+
+*Input:* input date type, image or video.
+
+*Decoder:* libs for decoding the input. 
+"opencv" is the public release version of opencv which using CPU for decoding.
+"bm-opencv" and "ffmpeg" are the bitmain versions of opencv and ffmpeg which using VPU for decoding.
+
+*Preprocessor:* libs for processing image or tensor.
+"opencv" is the public release version of opencv which using CPU for caculating.
+"bm-opencv" and "bmcv" are the bitmain versions for processing image or tensor.
+
+*Data Type:* data type of the bmodel to be used, fp32 or int8.
+
+*Model:* model name.
+
+*Mode:* two modes, static mean input tensor shapes of bmodel are unchanged, 
+while dynamic means input tensor shapes of bmodel can be changed.
+
+*Model Number:* multiple models are supported at the same time.
+
+*TPU Number:* multiple TPUs are supported at the same time.
+
+*Multi Thread:*: multiple thread are supported at the same time.
+
+
+Return Values
+_____________
+We also defined a return value list for each case, for reference.
+
++-----+------------------+
+| ret | meaning          |
++=====+==================+
+|  0  | normal           |
++-----+------------------+
+|  1  | comparing failed |
++-----+------------------+
+|  2  | invalid tpu id   |
++-----+------------------+
+

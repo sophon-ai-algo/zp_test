@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python Codes Explanation &mdash; SophonInference  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Detection with SSD" href="../2_ssd.html" />
+    <link rel="prev" title="C++ Codes Explanation" href="cpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> SophonInference
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../get_start/0_products.html">Sophon Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_start/1_crash_course.html">Crash Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_start/3_introduction.html">Introduction</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../0_preface.html">Preface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../1_resnet50.html">Classification with Resnet</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp.html">C++ Codes Explanation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python Codes Explanation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#case-0-simplest-case">Case 0: simplest case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#case-1-multi-thread-implementation-of-case-0">Case 1: multi-thread implementation of case 0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#case-2-multi-thread-with-multiple-models">Case 2: multi-thread with multiple models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#case-3-multi-thread-with-multiple-tpus">Case 3: multi-thread with multiple TPUs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../2_ssd.html">Detection with SSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_yolov3.html">Detection with Yolov3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_mtcnn.html">Detection with MTCNN</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail.html">SAIL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail_cpp.html">SAIL C++ API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail_python.html">SAIL Python API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SophonInference</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../1_resnet50.html">Classification with Resnet</a> &raquo;</li>
+        
+      <li>Python Codes Explanation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/demo/resnet_cases/python.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python-codes-explanation">
+<h1>Python Codes Explanation<a class="headerlink" href="#python-codes-explanation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="case-0-simplest-case">
+<h2>Case 0: simplest case<a class="headerlink" href="#case-0-simplest-case" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>In case 0, we drive a bmodel converted from resnet50 to classfy an image.
+Whole procedure is composed of four steps: initializing, preprocessing, inference, postprocessing,
+which corresponds to four function calls.</p>
+<dl class="docutils">
+<dt>Initializing:</dt>
+<dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">engine</span> <span class="o">=</span> <span class="n">sail</span><span class="o">.</span><span class="n">Engine</span><span class="p">(</span><span class="n">bmodel_path</span><span class="p">,</span> <span class="n">tpu_id</span><span class="p">,</span> <span class="n">sail</span><span class="o">.</span><span class="n">SYSIO</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>Preprocessing:</dt>
+<dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">input_path</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>Inference:</dt>
+<dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">graph_name</span><span class="p">,</span> <span class="p">{</span><span class="n">input_name</span><span class="p">:</span><span class="n">image</span><span class="p">})</span>
+</pre></div>
+</div>
+</dd>
+<dt>Postprocessing:</dt>
+<dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">postprocess</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="n">output_name</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="case-1-multi-thread-implementation-of-case-0">
+<h2>Case 1: multi-thread implementation of case 0<a class="headerlink" href="#case-1-multi-thread-implementation-of-case-0" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>In case 1, we will show the multi-thread programming mode of sail.Engine.
+Simplely, one bmodel was loaded by one sail.Engine instance, while input/output tensors are managed outside this sail.Engine instance in different threads.</p>
+<dl class="docutils">
+<dt>We loaded the bmodel into sail.Engine instance after constucor, not in the constructor:</dt>
+<dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># init Engine</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">sail</span><span class="o">.</span><span class="n">Engine</span><span class="p">(</span><span class="n">ARGS</span><span class="o">.</span><span class="n">tpu_id</span><span class="p">)</span>
+<span class="c1"># load bmodel without builtin input and output tensors</span>
+<span class="c1"># each thread manage its input and output tensors</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">ARGS</span><span class="o">.</span><span class="n">bmodel</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>In each thread, we seperately managed the input and output tensors.
+While in case 0, these tensors were managed automatically in the sail.Engine instance.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># get handle to create input and output tensors</span>
+<span class="n">handle</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">get_handle</span><span class="p">()</span>
+<span class="nb">input</span> <span class="o">=</span> <span class="n">sail</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">,</span> <span class="n">in_dtype</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">sail</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">output_shape</span><span class="p">,</span> <span class="n">out_dtype</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">input_tensors</span> <span class="o">=</span> <span class="p">{</span><span class="n">input_name</span><span class="p">:</span><span class="nb">input</span><span class="p">}</span>
+<span class="n">ouptut_tensors</span> <span class="o">=</span> <span class="p">{</span><span class="n">output_name</span><span class="p">:</span><span class="n">output</span><span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="case-2-multi-thread-with-multiple-models">
+<h2>Case 2: multi-thread with multiple models<a class="headerlink" href="#case-2-multi-thread-with-multiple-models" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>In case 2, multiple bmodels could be fed.
+The program can create multiple threads to load different bmodels.
+The loading function and its caller are as follows:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">thread_load</span><span class="p">(</span><span class="n">thread_id</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">bmodel_path</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot; Load a model in a thread.</span>
+
+<span class="sd">Args:</span>
+<span class="sd">  thread_id: ID of the thread.</span>
+<span class="sd">  engine: An sail.Engine instance.</span>
+<span class="sd">  bmodel_path: Path to bmodel.</span>
+
+<span class="sd">Returns:</span>
+<span class="sd">  None.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">bmodel_path</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">ret</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+  <span class="n">graph_name</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">get_graph_names</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Thread {} load {} successfully.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">thread_id</span><span class="p">,</span> <span class="n">graph_name</span><span class="p">))</span>
+
+
+<span class="c1"># load bmodel without builtin input and output tensors</span>
+<span class="c1"># each thread manage its input and output tensors</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">thread_num</span><span class="p">):</span>
+  <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">thread_load</span><span class="p">,</span>
+                                  <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">ARGS</span><span class="o">.</span><span class="n">bmodel</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Other codes are almost the same as case 1.</p>
+</div></blockquote>
+</div>
+<div class="section" id="case-3-multi-thread-with-multiple-tpus">
+<h2>Case 3: multi-thread with multiple TPUs<a class="headerlink" href="#case-3-multi-thread-with-multiple-tpus" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>In Case 3, we will exploit multiple TPUs to do inference.
+While the SAIL:Engine instance is bound to device,
+we should initialize multiple sail.Engine instances for each TPU.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># init Engine to load bmodel and allocate input and output tensors</span>
+<span class="c1"># one engine for one TPU</span>
+<span class="n">engines</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">thread_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ARGS</span><span class="o">.</span><span class="n">tpu_id</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">thread_num</span><span class="p">):</span>
+  <span class="n">engines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sail</span><span class="o">.</span><span class="n">Engine</span><span class="p">(</span><span class="n">ARGS</span><span class="o">.</span><span class="n">bmodel</span><span class="p">,</span> <span class="n">ARGS</span><span class="o">.</span><span class="n">tpu_id</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sail</span><span class="o">.</span><span class="n">SYSIO</span><span class="p">))</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Other codes are almost the same as case 1.</p>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../2_ssd.html" class="btn btn-neutral float-right" title="Detection with SSD" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cpp.html" class="btn btn-neutral float-left" title="C++ Codes Explanation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sophon
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+Crash Course
+============
+
+In this course, we will try to deploy a tensorflow frozen model of mobilenet on a normal PC with a Sophon SC5.
+
+.. toctree::
+   :glob:
+
+   courses/install
+   courses/convert
+   courses/deploy
+
+
+

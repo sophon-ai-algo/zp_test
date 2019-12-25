@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>C++ Codes Explanation &mdash; SophonInference  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Python Codes Explanation" href="python.html" />
+    <link rel="prev" title="Usage" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> SophonInference
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../get_start/0_products.html">Sophon Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_start/1_crash_course.html">Crash Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_start/3_introduction.html">Introduction</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../0_preface.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_resnet50.html">Classification with Resnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_ssd.html">Detection with SSD</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../3_yolov3.html">Detection with Yolov3</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">C++ Codes Explanation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#case-0-decoding-and-preprocessing-with-opencv">Case 0: decoding and preprocessing with opencv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#case-1-decoding-with-bm-ffmpeg-and-preprocessing-with-bmcv">Case 1: decoding with bm-ffmpeg and preprocessing with bmcv</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Python Codes Explanation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../4_mtcnn.html">Detection with MTCNN</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail.html">SAIL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail_cpp.html">SAIL C++ API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail_python.html">SAIL Python API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SophonInference</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../3_yolov3.html">Detection with Yolov3</a> &raquo;</li>
+        
+      <li>C++ Codes Explanation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/demo/yolov3_cases/cpp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="c-codes-explanation">
+<h1>C++ Codes Explanation<a class="headerlink" href="#c-codes-explanation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="case-0-decoding-and-preprocessing-with-opencv">
+<h2>Case 0: decoding and preprocessing with opencv<a class="headerlink" href="#case-0-decoding-and-preprocessing-with-opencv" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>In this case, we detect objects in multiple videos with a bmodel converted by yolov3.
+We use public released opencv to decode videos and process images.
+In the function of do_inference, we first initialize instances of sail::Engine, PreProcessor, PostProcessor:</p>
+<blockquote>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// ...</span>
+<span class="n">sail</span><span class="o">::</span><span class="n">Engine</span> <span class="n">engine</span><span class="p">(</span><span class="n">bmodel_path</span><span class="p">,</span> <span class="n">tpu_id</span><span class="p">,</span> <span class="n">sail</span><span class="o">::</span><span class="n">SYSIO</span><span class="p">);</span>
+
+<span class="c1">// ...</span>
+
+<span class="n">PreProcessor</span> <span class="nf">preprocessor</span><span class="p">(</span><span class="mi">416</span><span class="p">,</span> <span class="mi">416</span><span class="p">);</span>
+
+<span class="c1">// ...</span>
+
+<span class="n">PostProcessor</span> <span class="nf">postprocessor</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span>
+
+<span class="c1">// ...</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Then, we use a while-loop to process each frame of the video.
+The core of the pipeline are decoding, preprocessing, inference, postprocessing.</p>
+<blockquote>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// ...</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="n">cap</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">frame</span><span class="p">))</span> <span class="p">{</span>
+
+  <span class="c1">// ...</span>
+
+  <span class="n">preprocessor</span><span class="p">.</span><span class="n">processv2</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">frame</span><span class="p">);</span>
+
+  <span class="c1">// ...</span>
+
+  <span class="n">engine</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">graph_name</span><span class="p">);</span>
+
+  <span class="c1">// ...</span>
+
+  <span class="k">auto</span> <span class="n">result</span> <span class="o">=</span> <span class="n">postprocessor</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">output_shape</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="case-1-decoding-with-bm-ffmpeg-and-preprocessing-with-bmcv">
+<h2>Case 1: decoding with bm-ffmpeg and preprocessing with bmcv<a class="headerlink" href="#case-1-decoding-with-bm-ffmpeg-and-preprocessing-with-bmcv" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>In case 1, we use bm-ffmpeg and bmcv for decoding and preprocessing instead of public released opencv.
+Thus, FFMpegFrameProvider which is defined in “frame_provider.h” and encapsulated sail::Decoder, sail::Bmcv is used to decoding input videos.
+And, PreProcessorBmcv is used to processing image tensor before inference.</p>
+<blockquote>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// ...</span>
+
+<span class="n">PreProcessorBmcv</span> <span class="nf">preprocessor</span><span class="p">(</span><span class="n">bmcv</span><span class="p">,</span> <span class="n">input_scale</span><span class="p">,</span> <span class="mi">416</span><span class="p">,</span> <span class="mi">416</span><span class="p">);</span>
+<span class="n">PostProcessor</span> <span class="nf">postprocessor</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span>
+
+<span class="c1">// ...</span>
+
+<span class="n">FFMpegFrameProvider</span> <span class="nf">frame_provider</span><span class="p">(</span><span class="n">bmcv</span><span class="p">,</span> <span class="n">input_path</span><span class="p">,</span> <span class="n">tpu_id</span><span class="p">);</span>
+<span class="n">sail</span><span class="o">::</span><span class="n">BMImage</span> <span class="n">img0</span><span class="p">,</span> <span class="n">img1</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">frame_provider</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">img0</span><span class="p">))</span> <span class="p">{</span>
+
+  <span class="c1">// ...</span>
+
+  <span class="n">preprocessor</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">img0</span><span class="p">,</span> <span class="n">img1</span><span class="p">);</span>
+
+  <span class="c1">// ...</span>
+
+  <span class="n">engine</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">graph_name</span><span class="p">);</span>
+
+  <span class="c1">// ...</span>
+
+  <span class="k">auto</span> <span class="n">result</span> <span class="o">=</span> <span class="n">postprocessor</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">output_shape</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">);</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="python.html" class="btn btn-neutral float-right" title="Python Codes Explanation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sophon
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

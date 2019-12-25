@@ -1,0 +1,1378 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SAIL Python API &mdash; SophonInference  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="SAIL C++ API" href="sail_cpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> SophonInference
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../get_start/products.html">Sophon Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_start/crash_course.html">Crash Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_start/practical_demos.html">Practical Demos</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/abstract.html">Introduction of  Sophon Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/install.html">Sophon Inference Installation</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="sail.html">SAIL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sail_cpp.html">SAIL C++ API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SAIL Python API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-function">Basic function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-type">Data type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sail-handle">sail.Handle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sail-iomode">sail.IOMode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sail-tensor">sail.Tensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sail-engine">sail.Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sail-bmimage">sail.BMImage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sail-decoder">sail.Decoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sail-bmcv">sail.Bmcv</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SophonInference</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>SAIL Python API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/module/sail_python.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sail-python-api">
+<h1>SAIL Python API<a class="headerlink" href="#sail-python-api" title="Permalink to this headline">¶</a></h1>
+<p>SAIL use “pybind11” to wrap python interfaces, support python3.5.</p>
+<div class="section" id="basic-function">
+<h2>Basic function<a class="headerlink" href="#basic-function" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_available_tpu_num</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Get the number of available TPUs.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tpu_num : int</span>
+<span class="sd">        Number of available TPUs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-type">
+<h2>Data type<a class="headerlink" href="#data-type" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data type for float32</span>
+<span class="n">sail</span><span class="o">.</span><span class="n">Dtype</span><span class="o">.</span><span class="n">BM_FLOAT32</span>
+<span class="c1"># Data type for int8</span>
+<span class="n">sail</span><span class="o">.</span><span class="n">Dtype</span><span class="o">.</span><span class="n">BM_INT8</span>
+<span class="c1"># Data type for uint8</span>
+<span class="n">sail</span><span class="o">.</span><span class="n">Dtype</span><span class="o">.</span><span class="n">BM_UINT8</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sail-handle">
+<h2>sail.Handle<a class="headerlink" href="#sail-handle" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="n">tpu_id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Constructor handle instance</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tpu_id : int</span>
+<span class="sd">        create handle with tpu Id</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">free</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; free handle</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sail-iomode">
+<h2>sail.IOMode<a class="headerlink" href="#sail-iomode" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Input tensors are in system memory while output tensors are in device memory</span>
+<span class="n">sail</span><span class="o">.</span><span class="n">IOMode</span><span class="o">.</span><span class="n">SYSI</span>
+<span class="c1"># Input tensors are in device memory while output tensors are in system memory.</span>
+<span class="n">sail</span><span class="o">.</span><span class="n">IOMode</span><span class="o">.</span><span class="n">SYSO</span>
+<span class="c1"># Both input and output tensors are in system memory.</span>
+<span class="n">sail</span><span class="o">.</span><span class="n">IOMode</span><span class="o">.</span><span class="n">SYSIO</span>
+<span class="c1"># Both input and output tensors are in device memory.</span>
+<span class="n">sail</span><span class="o">.</span><span class="n">IOMode</span><span class="o">.</span><span class="n">DEVIO</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sail-tensor">
+<h2>sail.Tensor<a class="headerlink" href="#sail-tensor" title="Permalink to this headline">¶</a></h2>
+<p><strong>1). Tensor</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Constructor allocates device memory of the tensor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    handle : sail.Handle</span>
+<span class="sd">        Handle instance</span>
+<span class="sd">    array_data : numpy.array</span>
+<span class="sd">        Tensor ndarray data, dtype can be np.float32, np.int8 or np.uint8</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">own_sys_data</span><span class="p">,</span> <span class="n">own_dev_data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Constructor allocates system memory and device memory of the tensor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    handle : sail.Handle</span>
+<span class="sd">        Handle instance</span>
+<span class="sd">    shape : tuple</span>
+<span class="sd">        Tensor shape</span>
+<span class="sd">    dytpe : sail.Dtype</span>
+<span class="sd">        Data type</span>
+<span class="sd">    own_sys_data : bool</span>
+<span class="sd">        Indicator of whether own system memory</span>
+<span class="sd">    own_dev_data : bool</span>
+<span class="sd">        Indicator of whether own device memory</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>2). shape</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">shape</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Get shape of the tensor.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tensor_shape : list</span>
+<span class="sd">        Shape of the tensor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>3). asnumpy</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">asnumpy</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Get system data of the tensor.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    data : numpy.array</span>
+<span class="sd">        System data of the tensor, dtype can be np.float32, np.int8</span>
+<span class="sd">        or np.uint8 with respective to the dtype of the tensor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">asnumpy</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get system data of the tensor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    shape : tuple</span>
+<span class="sd">        Tensor shape want to get</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    data : numpy.array</span>
+<span class="sd">        System data of the tensor, dtype can be np.float32, np.int8</span>
+<span class="sd">        or np.uint8 with respective to the dtype of the tensor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>4). update_data</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Update system data of the tensor. The data size should not exceed</span>
+<span class="sd">        the tensor size, and the tensor shape will not be changed.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -------</span>
+<span class="sd">    data : numpy.array</span>
+<span class="sd">        Data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>5). scale_from</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scale_from</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">scale</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Scale data to tensor in system memory.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -------</span>
+<span class="sd">    data : numpy.array with dtype of float32</span>
+<span class="sd">        Data.</span>
+<span class="sd">    scale : float32</span>
+<span class="sd">        Scale value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>6). scale_to</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scale_from</span><span class="p">(</span><span class="n">scale</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Scale tensor to data in system memory.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -------</span>
+<span class="sd">    scale : float32</span>
+<span class="sd">        Scale value.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    data : numpy.array with dtype of float32</span>
+<span class="sd">        Data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">scale_from</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Scale tensor to data in system memory.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -------</span>
+<span class="sd">    scale : float32</span>
+<span class="sd">        Scale value.</span>
+<span class="sd">    shape : tuple</span>
+<span class="sd">        Tensor shape want to get</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    data : numpy.array with dtype of float32</span>
+<span class="sd">        Data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>7). dtype</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dtype</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Get data type of the tensor.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dtype : sail.Dtype</span>
+<span class="sd">        Data type of the tensor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>8). reshape</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Reset shape of the tensor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    -------</span>
+<span class="sd">    shape : list</span>
+<span class="sd">        New shape of the tensor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>9). own_sys_data</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">own_sys_data</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Judge if the tensor owns data pointer in system memory.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    judge_ret : bool</span>
+<span class="sd">        True for owns data pointer in system memory.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>10). own_dev_data</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">own_dev_data</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Judge if the tensor owns data in device memory.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    judge_ret : bool</span>
+<span class="sd">        True for owns data in device memory.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>11). sync_s2d</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sync_s2d</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Copy data from system memory to device memory.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">sync_s2d</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Copy data from system memory to device memory with specified size.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    size : int</span>
+<span class="sd">        Byte size to be copied</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>12). sync_d2s</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sync_d2s</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Copy data from device memory to system memory.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">sync_d2s</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Copy data from device memory to system memory with specified size.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    size : int</span>
+<span class="sd">        Byte size to be copied</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="sail-engine">
+<h2>sail.Engine<a class="headerlink" href="#sail-engine" title="Permalink to this headline">¶</a></h2>
+<p><strong>1). Engine</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="n">tpu_id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Constructor does not load bmodel.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tpu_id : int</span>
+<span class="sd">        TPU ID. You can use bm-smi to see available IDs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="n">handle</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Constructor does not load bmodel.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    hanle : Handle</span>
+<span class="sd">       A Handle instance</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="n">bmodel_path</span><span class="p">,</span> <span class="n">tpu_id</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Constructor loads bmodel from file.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    bmodel_path : str</span>
+<span class="sd">        Path to bmodel</span>
+<span class="sd">    tpu_id : int</span>
+<span class="sd">        TPU ID. You can use bm-smi to see available IDs</span>
+<span class="sd">    mode : sail.IOMode</span>
+<span class="sd">        Specify the input/output tensors are in system memory</span>
+<span class="sd">        or device memory</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="n">bmodel_path</span><span class="p">,</span> <span class="n">handle</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Constructor loads bmodel from file.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    bmodel_path : str</span>
+<span class="sd">        Path to bmodel</span>
+<span class="sd">    hanle : Handle</span>
+<span class="sd">       A Handle instance</span>
+<span class="sd">    mode : sail.IOMode</span>
+<span class="sd">        Specify the input/output tensors are in system memory</span>
+<span class="sd">        or device memory</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="n">bmodel_bytes</span><span class="p">,</span> <span class="n">bmodel_size</span><span class="p">,</span> <span class="n">tpu_id</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Constructor using default input shapes with bmodel which</span>
+<span class="sd">    loaded in memory</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    bmodel_bytes : bytes</span>
+<span class="sd">        Bytes of  bmodel in system memory</span>
+<span class="sd">    bmodel_size : int</span>
+<span class="sd">        Bmodel byte size</span>
+<span class="sd">    tpu_id : int</span>
+<span class="sd">        TPU ID. You can use bm-smi to see available IDs</span>
+<span class="sd">    mode : sail.IOMode</span>
+<span class="sd">        Specify the input/output tensors are in system memory</span>
+<span class="sd">        or device memory</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="n">bmodel_bytes</span><span class="p">,</span> <span class="n">bmodel_size</span><span class="p">,</span> <span class="n">handle</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Constructor using default input shapes with bmodel which</span>
+<span class="sd">    loaded in memory</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    bmodel_bytes : bytes</span>
+<span class="sd">        Bytes of  bmodel in system memory</span>
+<span class="sd">    bmodel_size : int</span>
+<span class="sd">        Bmodel byte size</span>
+<span class="sd">    hanle : Handle</span>
+<span class="sd">       A Handle instance</span>
+<span class="sd">    mode : sail.IOMode</span>
+<span class="sd">        Specify the input/output tensors are in system memory</span>
+<span class="sd">        or device memory</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>2). get_handle</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_handle</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Get Handle instance.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    handle: sail.Handle</span>
+<span class="sd">       Handle instance</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>3). load</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">bmodel_path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Load bmodel from file.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    bmodel_path : str</span>
+<span class="sd">        Path to bmodel</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">bmodel_bytes</span><span class="p">,</span> <span class="n">bmodel_size</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Load bmodel from file.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    bmodel_bytes : bytes</span>
+<span class="sd">        Bytes of  bmodel in system memory</span>
+<span class="sd">    bmodel_size : int</span>
+<span class="sd">        Bmodel byte size</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>4). get_graph_names</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_graph_names</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Get all graph names in the loaded bmodels.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    graph_names : list</span>
+<span class="sd">        Graph names list in loaded context</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>5). set_io_mode</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_io_mode</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Set IOMode for a graph.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mode : sail.IOMode</span>
+<span class="sd">        Specified io mode</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>6). graph_is_dynamic</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">graph_is_dynamic</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Jugde if the graph is dynamic.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    judge_ret : int</span>
+<span class="sd">        0 for dynamic and 1 for static</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>7). get_input_names</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_input_names</span><span class="p">(</span><span class="n">graph_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get all input tensor names of the specified graph.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph_name : str</span>
+<span class="sd">        Specified graph name</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    input_names : list</span>
+<span class="sd">        All the input tensor names of the graph</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>8). get_output_names</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_output_names</span><span class="p">(</span><span class="n">graph_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get all output tensor names of the specified graph.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph_name : str</span>
+<span class="sd">        Specified graph name</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    input_names : list</span>
+<span class="sd">        All the output tensor names of the graph</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>9). get_max_input_shapes</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_max_input_shapes</span><span class="p">(</span><span class="n">graph_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get max shapes of input tensors in a graph.</span>
+<span class="sd">        For static models, the max shape is fixed and it should not be changed.</span>
+<span class="sd">        For dynamic models, the tensor shape should be smaller than or equal to</span>
+<span class="sd">        the max shape.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph_name : str</span>
+<span class="sd">        The specified graph name</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    max_shapes : dict {str : list}</span>
+<span class="sd">        Max shape of the input tensors</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>10). get_input_shape</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_input_shape</span><span class="p">(</span><span class="n">graph_name</span><span class="p">,</span> <span class="n">tensor_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get the shape of an input tensor in a graph.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph_name : str</span>
+<span class="sd">        The specified graph name</span>
+<span class="sd">    tensor_name : str</span>
+<span class="sd">        The specified input tensor name</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tensor_shape : list</span>
+<span class="sd">        The shape of the tensor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>11). get_max_output_shapes</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_max_output_shapes</span><span class="p">(</span><span class="n">graph_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get max shapes of input tensors in a graph.</span>
+<span class="sd">        For static models, the max shape is fixed and it should not be changed.</span>
+<span class="sd">        For dynamic models, the tensor shape should be smaller than or equal to</span>
+<span class="sd">        the max shape.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph_name : str</span>
+<span class="sd">        The specified graph name</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    max_shapes : dict {str : list}</span>
+<span class="sd">        Max shape of the output tensors</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>12). get_output_shape</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_output_shape</span><span class="p">(</span><span class="n">graph_name</span><span class="p">,</span> <span class="n">tensor_name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get the shape of an output tensor in a graph.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph_name : str</span>
+<span class="sd">        The specified graph name</span>
+<span class="sd">    tensor_name : str</span>
+<span class="sd">        The specified output tensor name</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tensor_shape : list</span>
+<span class="sd">        The shape of the tensor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>13). get_input_dtype</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_input_dtype</span><span class="p">(</span><span class="n">graph_name</span><span class="p">,</span> <span class="n">tensor_name</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot; Get scale of an input tensor. Only used for int8 models.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph_name : str</span>
+<span class="sd">        The specified graph name</span>
+<span class="sd">    tensor_name : str</span>
+<span class="sd">        The specified output tensor name</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    scale: sail.Dtype</span>
+<span class="sd">        Data type of the input tensor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>14). get_output_dtype</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_output_dtype</span><span class="p">(</span><span class="n">graph_name</span><span class="p">,</span> <span class="n">tensor_name</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot; Get scale of an output tensor. Only used for int8 models.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph_name : str</span>
+<span class="sd">        The specified graph name</span>
+<span class="sd">    tensor_name : str</span>
+<span class="sd">        The specified output tensor name</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    scale: sail.Dtype</span>
+<span class="sd">        Data type of the output tensor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>15). get_input_scale</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_input_scale</span><span class="p">(</span><span class="n">graph_name</span><span class="p">,</span> <span class="n">tensor_name</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot; Get scale of an input tensor. Only used for int8 models.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph_name : str</span>
+<span class="sd">        The specified graph name</span>
+<span class="sd">    tensor_name : str</span>
+<span class="sd">        The specified output tensor name</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    scale: float32</span>
+<span class="sd">        Scale of the input tensor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>16). get_output_scale</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_output_scale</span><span class="p">(</span><span class="n">graph_name</span><span class="p">,</span> <span class="n">tensor_name</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot; Get scale of an output tensor. Only used for int8 models.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph_name : str</span>
+<span class="sd">        The specified graph name</span>
+<span class="sd">    tensor_name : str</span>
+<span class="sd">        The specified output tensor name</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    scale: float32</span>
+<span class="sd">        Scale of the output tensor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>17). process</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="n">graph_name</span><span class="p">,</span> <span class="n">input_tensors</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Inference with provided system data of input tensors.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph_name : str</span>
+<span class="sd">        The specified graph name</span>
+<span class="sd">    input_tensors : dict {str : numpy.array}</span>
+<span class="sd">        Data of all input tensors in system memory</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    output_tensors : dict {str : numpy.array}</span>
+<span class="sd">        Data of all output tensors in system memory</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="n">graph_name</span><span class="p">,</span> <span class="n">input_tensors</span><span class="p">,</span> <span class="n">output_tensors</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Inference with provided input and output tensors.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph_name : str</span>
+<span class="sd">        The specified graph name</span>
+<span class="sd">    input_tensors : dict {str : sail.Tensor}</span>
+<span class="sd">        Input tensors managed by user</span>
+<span class="sd">    output_tensors : dict {str : sail.Tensor}</span>
+<span class="sd">        Output tensors managed by user</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="n">graph_name</span><span class="p">,</span> <span class="n">input_tensors</span><span class="p">,</span> <span class="n">input_shapes</span><span class="p">,</span> <span class="n">output_tensors</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Inference with provided input tensors, input shapes and output tensors.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph_name : str</span>
+<span class="sd">        The specified graph name</span>
+<span class="sd">    input_tensors : dict {str : sail.Tensor}</span>
+<span class="sd">        Input tensors managed by user</span>
+<span class="sd">    input_shapes : dict {str : list}</span>
+<span class="sd">        Shapes of all input tensors</span>
+<span class="sd">    output_tensors : dict {str : sail.Tensor}</span>
+<span class="sd">        Output tensors managed by user</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="sail-bmimage">
+<h2>sail.BMImage<a class="headerlink" href="#sail-bmimage" title="Permalink to this headline">¶</a></h2>
+<p><strong>1). BMImage</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Constructor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>2). width</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">width</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Get the img width.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    width : int</span>
+<span class="sd">       The width of img</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>3). height</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">height</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Get the img height.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    height : int</span>
+<span class="sd">       The height of img</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>4). format</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">format</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Get the img format.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    format : bm_image_format_ext</span>
+<span class="sd">       The format of img</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="sail-decoder">
+<h2>sail.Decoder<a class="headerlink" href="#sail-decoder" title="Permalink to this headline">¶</a></h2>
+<p><strong>1). Decoder</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">compressed</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">tpu_id</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Constructor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    file_path : str</span>
+<span class="sd">       Path or rtsp url to the video/image file</span>
+<span class="sd">    compressed : bool, default: True</span>
+<span class="sd">       Whether the format of decoded output is compressed NV12.</span>
+<span class="sd">    tpu_id: int, default: 0</span>
+<span class="sd">       ID of TPU, there may be more than one TPU for PCIE mode.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>2). is_opened</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_opened</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Judge if the source is opened successfully.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    judge_ret : bool</span>
+<span class="sd">        True for success and False for failure</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>3). read</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">image</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Read an image from the Decoder.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    handle : sail.Handle</span>
+<span class="sd">        Handle instance</span>
+<span class="sd">    image : sail.BMImage</span>
+<span class="sd">        BMImage instance</span>
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    judge_ret : int</span>
+<span class="sd">        0 for success and others for failure</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="sail-bmcv">
+<h2>sail.Bmcv<a class="headerlink" href="#sail-bmcv" title="Permalink to this headline">¶</a></h2>
+<p><strong>1). Bmcv</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="n">handle</span><span class="p">):</span>
+    <span class="s2">&quot;&quot;&quot; Constructor.</span>
+
+<span class="s2">    Parameters</span>
+<span class="s2">    ----------</span>
+<span class="s2">    handle : sail.Handle</span>
+<span class="s2">        Handle instance</span>
+<span class="s2">    &quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>2). bm_image_to_tensor</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bm_image_to_tensor</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Convert image to tensor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    image : sail.BMImage</span>
+<span class="sd">        BMImage instance</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tensor : sail.Tensor</span>
+<span class="sd">        Tensor instance</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>3). tensor_to_bm_image</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tensor_to_bm_image</span><span class="p">(</span><span class="n">tensor</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Convert tensor to image.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tensor : sail.Tensor</span>
+<span class="sd">        Tensor instance</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    image : sail.BMImage</span>
+<span class="sd">        BMImage instance</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>4). crop_and_resize</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">crop_and_resize</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">crop_x0</span><span class="p">,</span> <span class="n">crop_y0</span><span class="p">,</span> <span class="n">crop_w</span><span class="p">,</span> <span class="n">crop_h</span><span class="p">,</span> <span class="n">resize_w</span><span class="p">,</span> <span class="n">resize_h</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Crop then resize an image.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    input : sail.BMImage</span>
+<span class="sd">        Input image</span>
+<span class="sd">    crop_x0 : int</span>
+<span class="sd">        Start point x of the crop window</span>
+<span class="sd">    crop_y0 : int</span>
+<span class="sd">        Start point y of the crop window</span>
+<span class="sd">    crop_w : int</span>
+<span class="sd">        Width of the crop window</span>
+<span class="sd">    crop_h : int</span>
+<span class="sd">        Height of the crop window</span>
+<span class="sd">    resize_w : int</span>
+<span class="sd">        Target width</span>
+<span class="sd">    resize_h : int</span>
+<span class="sd">        Target height</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    output : sail.BMImage</span>
+<span class="sd">        Output image</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>5). crop</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">crop</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">crop_x0</span><span class="p">,</span> <span class="n">crop_y0</span><span class="p">,</span> <span class="n">crop_w</span><span class="p">,</span> <span class="n">crop_h</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Crop an image with given window.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    input : sail.BMImage</span>
+<span class="sd">        Input image</span>
+<span class="sd">    crop_x0 : int</span>
+<span class="sd">        Start point x of the crop window</span>
+<span class="sd">    crop_y0 : int</span>
+<span class="sd">        Start point y of the crop window</span>
+<span class="sd">    crop_w : int</span>
+<span class="sd">        Width of the crop window</span>
+<span class="sd">    crop_h : int</span>
+<span class="sd">        Height of the crop window</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    output : sail.BMImage</span>
+<span class="sd">        Output image</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>6). resize</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">resize_w</span><span class="p">,</span> <span class="n">resize_h</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Resize an image with interpolation of INTER_NEAREST.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    input : sail.BMImage</span>
+<span class="sd">        Input image</span>
+<span class="sd">    resize_w : int</span>
+<span class="sd">        Target width</span>
+<span class="sd">    resize_h : int</span>
+<span class="sd">        Target height</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    output : sail.BMImage</span>
+<span class="sd">        Output image</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>7). vpp_crop_and_resize</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">vpp_crop_and_resize</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">crop_x0</span><span class="p">,</span> <span class="n">crop_y0</span><span class="p">,</span> <span class="n">crop_w</span><span class="p">,</span> <span class="n">crop_h</span><span class="p">,</span> <span class="n">resize_w</span><span class="p">,</span> <span class="n">resize_h</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Crop then resize an image using vpp.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    input : sail.BMImage</span>
+<span class="sd">        Input image</span>
+<span class="sd">    crop_x0 : int</span>
+<span class="sd">        Start point x of the crop window</span>
+<span class="sd">    crop_y0 : int</span>
+<span class="sd">        Start point y of the crop window</span>
+<span class="sd">    crop_w : int</span>
+<span class="sd">        Width of the crop window</span>
+<span class="sd">    crop_h : int</span>
+<span class="sd">        Height of the crop window</span>
+<span class="sd">    resize_w : int</span>
+<span class="sd">        Target width</span>
+<span class="sd">    resize_h : int</span>
+<span class="sd">        Target height</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    output : sail.BMImage</span>
+<span class="sd">        Output image</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>8). vpp_crop</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">vpp_crop</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">crop_x0</span><span class="p">,</span> <span class="n">crop_y0</span><span class="p">,</span> <span class="n">crop_w</span><span class="p">,</span> <span class="n">crop_h</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Crop an image with given window using vpp.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    input : sail.BMImage</span>
+<span class="sd">        Input image</span>
+<span class="sd">    crop_x0 : int</span>
+<span class="sd">        Start point x of the crop window</span>
+<span class="sd">    crop_y0 : int</span>
+<span class="sd">        Start point y of the crop window</span>
+<span class="sd">    crop_w : int</span>
+<span class="sd">        Width of the crop window</span>
+<span class="sd">    crop_h : int</span>
+<span class="sd">        Height of the crop window</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    output : sail.BMImage</span>
+<span class="sd">        Output image</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>9). vpp_resize</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">vpp_resize</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">resize_w</span><span class="p">,</span> <span class="n">resize_h</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Resize an image with interpolation of INTER_NEAREST using vpp.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    input : sail.BMImage</span>
+<span class="sd">        Input image</span>
+<span class="sd">    resize_w : int</span>
+<span class="sd">        Target width</span>
+<span class="sd">    resize_h : int</span>
+<span class="sd">        Target height</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    output : sail.BMImage</span>
+<span class="sd">        Output image</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>10). warp</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">warp</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">matrix</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Applies an affine transformation to an image.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    input : sail.BMImage</span>
+<span class="sd">        Input image</span>
+<span class="sd">    matrix: 2d list</span>
+<span class="sd">        2x3 transformation matrix</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    output : sail.BMImage</span>
+<span class="sd">        Output image</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>11). convert_to</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">convert_to</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">alpha_beta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Applies a linear transformation to an image.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    input : sail.BMImage</span>
+<span class="sd">        Input image</span>
+<span class="sd">    alpha_beta: tuple</span>
+<span class="sd">        (a0, b0), (a1, b1), (a2, b2) factors</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    output : sail.BMImage</span>
+<span class="sd">        Output image</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>12). yuv2bgr</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">yuv2bgr</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Convert an image from YUV to BGR.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    input : sail.BMImage</span>
+<span class="sd">        Input image</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    output : sail.BMImage</span>
+<span class="sd">        Output image</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>13). vpp_convert</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">vpp_convert</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Convert an image to BGR PLANAR format using vpp.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    input : sail.BMImage</span>
+<span class="sd">        Input image</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    output : sail.BMImage</span>
+<span class="sd">        Output image</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>14). convert</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Convert an image to BGR PLANAR format.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    input : sail.BMImage</span>
+<span class="sd">        Input image</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    output : sail.BMImage</span>
+<span class="sd">        Output image</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>15). rectangle</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rectangle</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Draw a rectangle on input image.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    image : sail.BMImage</span>
+<span class="sd">        Input image</span>
+<span class="sd">    x0 : int</span>
+<span class="sd">        Start point x of rectangle</span>
+<span class="sd">    y0 : int</span>
+<span class="sd">        Start point y of rectangle</span>
+<span class="sd">    w : int</span>
+<span class="sd">        Width of rectangle</span>
+<span class="sd">    h : int</span>
+<span class="sd">        Height of rectangle</span>
+<span class="sd">    color : tuple</span>
+<span class="sd">        Color of rectangle</span>
+<span class="sd">    thickness : int</span>
+<span class="sd">        Thickness of rectangle</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    process_status : int</span>
+<span class="sd">        0 for success and others for failure</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>16). imwrite</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">imwrite</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">image</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Save the image to the specified file.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    file_name : str</span>
+<span class="sd">        Name of the file</span>
+<span class="sd">    output : sail.BMImage</span>
+<span class="sd">        Image to be saved</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ----------</span>
+<span class="sd">    process_status : int</span>
+<span class="sd">        0 for success and others for failure</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>17). get_handle</strong></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_handle</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Get Handle instance.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    handle: sail.Handle</span>
+<span class="sd">       Handle instance</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="sail_cpp.html" class="btn btn-neutral float-left" title="SAIL C++ API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sophon
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

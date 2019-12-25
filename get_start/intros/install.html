@@ -1,0 +1,261 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sophon Inference Installation &mdash; SophonInference  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Preface" href="../../demo/0_preface.html" />
+    <link rel="prev" title="Sophon Inference" href="si.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> SophonInference
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../0_products.html">Sophon Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_crash_course.html">Crash Course</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../3_introduction.html">Introduction</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="deploy.html">Model deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bmnnsdk.html">BMNNSDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="si.html">Sophon Inference</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sophon Inference Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pcie-mode">PCIE mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#soc-mode">SOC mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../demo/0_preface.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demo/1_resnet50.html">Classification with Resnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demo/2_ssd.html">Detection with SSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demo/3_yolov3.html">Detection with Yolov3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../demo/4_mtcnn.html">Detection with MTCNN</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail.html">SAIL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail_cpp.html">SAIL C++ API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail_python.html">SAIL Python API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SophonInference</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../3_introduction.html">Introduction</a> &raquo;</li>
+        
+      <li>Sophon Inference Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/get_start/intros/install.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sophon-inference-installation">
+<h1>Sophon Inference Installation<a class="headerlink" href="#sophon-inference-installation" title="Permalink to this headline">¶</a></h1>
+<p>For different application scenarios, BITMAIN provides PCIE and SOC based on the BM168x chip, which corresponds to two different running modes:</p>
+<ul class="simple">
+<li>PCIE mode: The SDK runs on the X86 platform, and the BM168x acts as a deep learning acceleration card for the PCIE interface.</li>
+<li>SOC mode: The SDK runs independently on the BM168x platform and supports connection to other devices via Gigabit Ethernet.</li>
+</ul>
+<p>BMNNSDK supports the above two modes of operation and is fully compatible on the application interface.
+Please download the corresponding BMNNSDK to install according to the product form and requirements.
+It should be noted that in SOC mode, the BMCompiler module is not included in the BMNNSDK.
+You can use BMCompiler to complete offline compilation of the model in PCIE mode (no need to install SC3 accelerator card).
+The compiled bmodel can be loaded and run in SOC mode.</p>
+<p>Currently SophonInference supports PCIE mode, and the SOC mode.
+For SOC mode, Sophon Inference has already pre-installed on Sophon SE3.
+Including SAIL(cpp) and SAIL/AutoRunner/Algokit(python3).
+For PCIE mode, Sophon Inference has also provided SAIL(cpp) and SAIL(python3).</p>
+<div class="section" id="pcie-mode">
+<h2>PCIE mode<a class="headerlink" href="#pcie-mode" title="Permalink to this headline">¶</a></h2>
+<p><strong>a).Requirements</strong></p>
+<p>Hardware Environment: X86 host with Sophon SC3/SC5 accelerator card installed.</p>
+<p>Operating System: Ubuntu/CentOS/Debian.</p>
+<p>Software Environment: : BMNNSDK with PCIE mode installed.</p>
+<p><strong>b).Installation</strong></p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install the python module of Sophon Inference.</span>
+<span class="nb">cd</span> <span class="si">${</span><span class="nv">sophon_inference</span><span class="si">}</span>/python3/x86
+pip3 install sophon_x86-2.0.0-py3-none-any.whl --user
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="soc-mode">
+<h2>SOC mode<a class="headerlink" href="#soc-mode" title="Permalink to this headline">¶</a></h2>
+<p>Already installed.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../demo/0_preface.html" class="btn btn-neutral float-right" title="Preface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="si.html" class="btn btn-neutral float-left" title="Sophon Inference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sophon
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

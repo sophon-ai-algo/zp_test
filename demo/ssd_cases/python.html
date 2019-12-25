@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python Codes Explanation &mdash; SophonInference  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Detection with Yolov3" href="../3_yolov3.html" />
+    <link rel="prev" title="C++ Codes Explanation" href="cpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> SophonInference
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../get_start/0_products.html">Sophon Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_start/1_crash_course.html">Crash Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../get_start/3_introduction.html">Introduction</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../0_preface.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_resnet50.html">Classification with Resnet</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../2_ssd.html">Detection with SSD</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp.html">C++ Codes Explanation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python Codes Explanation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#case-0-decoding-and-preprocessing-with-opencv">Case 0: decoding and preprocessing with opencv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#case-1-decoding-with-bm-ffmpeg-and-preprocessing-with-bmcv">Case 1: decoding with bm-ffmpeg and preprocessing with bmcv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#case-2-decoding-with-bm-ffmpeg-and-preprocessing-with-bmcv-4n-mode">Case 2: decoding with bm-ffmpeg and preprocessing with bmcv, 4N-mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#case-3-decoding-and-preprocessing-with-bm-opencv">Case 3: decoding and preprocessing with bm-opencv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#case-4-decoding-with-bm-opencv-and-preprocessing-with-bmcv">Case 4: decoding with bm-opencv and preprocessing with bmcv</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../3_yolov3.html">Detection with Yolov3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_mtcnn.html">Detection with MTCNN</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail.html">SAIL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail_cpp.html">SAIL C++ API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../module/sail_python.html">SAIL Python API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">SophonInference</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../2_ssd.html">Detection with SSD</a> &raquo;</li>
+        
+      <li>Python Codes Explanation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/demo/ssd_cases/python.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python-codes-explanation">
+<h1>Python Codes Explanation<a class="headerlink" href="#python-codes-explanation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="case-0-decoding-and-preprocessing-with-opencv">
+<h2>Case 0: decoding and preprocessing with opencv<a class="headerlink" href="#case-0-decoding-and-preprocessing-with-opencv" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>In case 0, we exploit a bmodel converted from ssd300-vgg16 to detect objects from videos or images.
+We encapsulated an “inference” function to complete it.
+The definition of the function is:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">inference</span><span class="p">(</span><span class="n">bmodel_path</span><span class="p">,</span> <span class="n">input_path</span><span class="p">,</span> <span class="n">loops</span><span class="p">,</span> <span class="n">tpu_id</span><span class="p">,</span> <span class="n">compare_path</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot; Load a bmodel and do inference.</span>
+<span class="sd">  Args:</span>
+<span class="sd">    bmodel_path: Path to bmodel</span>
+<span class="sd">    input_path: Path to input file</span>
+<span class="sd">    loops: Number of loops to run</span>
+<span class="sd">    tpu_id: ID of TPU to use</span>
+<span class="sd">    compare_path: Path to correct result file</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    True for success and False for failure</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>In this function, we first initialize a sail::Engine instance with specified device,
+and load a bmodel into this sail::Engine instance.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># init Engine and load bmodel</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">sail</span><span class="o">.</span><span class="n">Engine</span><span class="p">(</span><span class="n">bmodel_path</span><span class="p">,</span> <span class="n">tpu_id</span><span class="p">,</span> <span class="n">sail</span><span class="o">.</span><span class="n">IOMode</span><span class="o">.</span><span class="n">SYSIO</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>We also need to initialize instances from PreProcessor, PostProcessor and Decoder.</p>
+<p>In this case, the decoder we used is the VideoCapture of opencv, we use it to decode videos or images.</p>
+<p>The PreProcessor and PostProcessor are classes just defined in this script.
+Preprocessing contains some resizing or scaling to original input tensor,
+while postprocessing contains bbox transformation and non-max suppression.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PreProcessor</span><span class="p">:</span>
+  <span class="sd">&quot;&quot;&quot; Preprocessing class.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+<span class="k">class</span> <span class="nc">PostProcessor</span><span class="p">:</span>
+  <span class="s2">&quot;&quot;&quot; Postprocessing class.</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>In the for-loop, there is a pipeline of the inference of detection:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># pipeline of inference</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">loops</span><span class="p">):</span>
+  <span class="c1"># read an image from a image file or a video file</span>
+  <span class="n">ret</span><span class="p">,</span> <span class="n">img0</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">:</span>
+    <span class="k">break</span>
+  <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">img0</span><span class="o">.</span><span class="n">shape</span>
+  <span class="c1"># preprocess</span>
+  <span class="n">data</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">img0</span><span class="p">)</span>
+  <span class="c1"># inference</span>
+  <span class="n">input_tensors</span> <span class="o">=</span> <span class="p">{</span><span class="n">input_name</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">data</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)}</span>
+  <span class="n">output</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">graph_name</span><span class="p">,</span> <span class="n">input_tensors</span><span class="p">)</span>
+  <span class="c1"># postprocess</span>
+  <span class="n">dets</span> <span class="o">=</span> <span class="n">postprocessor</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="n">output_name</span><span class="p">],</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+  <span class="c1"># print result</span>
+  <span class="c1"># ...</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="case-1-decoding-with-bm-ffmpeg-and-preprocessing-with-bmcv">
+<h2>Case 1: decoding with bm-ffmpeg and preprocessing with bmcv<a class="headerlink" href="#case-1-decoding-with-bm-ffmpeg-and-preprocessing-with-bmcv" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>In case 1, we use bm-ffmpeg and bmcv for decoding and preprocessing.
+But you don’t need to concern about the implementation of bm-ffmpeg and bmcv.
+We have already encapsulated them into SAIL.</p>
+<p>For decoding, sail::Decoder is based on bm-ffmpeg to help you decode videos and images.
+Just treat sail::Decoder as cv::VideoCapture, while sail::BMImage as cv::Mat,
+you can easily understand the code below:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># init decoder</span>
+<span class="n">decoder</span> <span class="o">=</span> <span class="n">sail</span><span class="o">.</span><span class="n">Decoder</span><span class="p">(</span><span class="n">input_path</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="n">tpu_id</span><span class="p">)</span>
+<span class="c1"># pipeline of inference</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">loops</span><span class="p">):</span>
+  <span class="c1"># read an image from a image file or a video file</span>
+  <span class="n">img0</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+  <span class="c1"># do somethig ...</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>And sail::Bmcv is used for preprocessing.
+Other codes are almost the same with case 0.</p>
+</div></blockquote>
+</div>
+<div class="section" id="case-2-decoding-with-bm-ffmpeg-and-preprocessing-with-bmcv-4n-mode">
+<h2>Case 2: decoding with bm-ffmpeg and preprocessing with bmcv, 4N-mode<a class="headerlink" href="#case-2-decoding-with-bm-ffmpeg-and-preprocessing-with-bmcv-4n-mode" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>The pipeline in case 2 is the same as that in case 1.
+But the batchsize in case 4 is 4.
+We want use this case to show you that,
+if you are using int8 computing units, batchsize is recommanded as 4 or multiples of 4.
+At this situation, you can use the TPU to its fullest.</div></blockquote>
+</div>
+<div class="section" id="case-3-decoding-and-preprocessing-with-bm-opencv">
+<h2>Case 3: decoding and preprocessing with bm-opencv<a class="headerlink" href="#case-3-decoding-and-preprocessing-with-bm-opencv" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>This case is suitale for SOC mode only.
+The form of calling bm-opencv in SOC mode is almost the same as calling opencv(public released) in PCIE mode.</div></blockquote>
+</div>
+<div class="section" id="case-4-decoding-with-bm-opencv-and-preprocessing-with-bmcv">
+<h2>Case 4: decoding with bm-opencv and preprocessing with bmcv<a class="headerlink" href="#case-4-decoding-with-bm-opencv-and-preprocessing-with-bmcv" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>This case is suitale for SOC mode only.
+The form of calling bm-opencv in SOC mode is almost the same as calling opencv(public released) in PCIE mode.</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../3_yolov3.html" class="btn btn-neutral float-right" title="Detection with Yolov3" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cpp.html" class="btn btn-neutral float-left" title="C++ Codes Explanation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sophon
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

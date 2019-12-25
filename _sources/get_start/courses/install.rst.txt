@@ -1,0 +1,34 @@
+install BMNNSDK2 and Sophon-Inference on PC with SC5
+____________________________________________________
+BMNNSDK2 is the original deep learning development toolkit of Bitmain.
+Sophon-Inference is a submodule of BMNNSDK2 which supplies a bunch of hight level APIs.
+With Sophon-Inference, we can rapidly deploy our deep learning models on Sophon TPU products.
+
+If you have got the package of BMNNSDK2, follow the steps below for installation.
+We use ${BMNNSDK2} represent the root folder of BMNNSDK2.
+
+**Install libs:**
+    .. code-block:: shell
+
+       cd ${BMNNSDK2}/scripts/ && ./install_lib.sh nntc
+
+**Install the driver:**
+    .. code-block:: shell
+
+       cd ${BMNNSDK2}/scripts/ && sudo ./install_driver_pcie.sh
+
+**Install bmnett, which can convert tensorflow frozen model to bmodel to run on Sophon TPUs:**
+
+    .. code-block:: shell
+
+       cd ${BMNNSDK2}/scripts/ && source envsetup_pcie.sh bmnett
+
+**Install Sophon-Inference:**
+    .. code-block:: shell
+
+       cd ${BMNNSDK2}/exsamples/sail/python3/x86/ && pip3 install sophon-2.0.2-py3-none-any.whl --user
+
+
+
+
+
