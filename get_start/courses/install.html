@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>install BMNNSDK2 and Sophon-Inference on PC with SC5 &mdash; SophonInference  documentation</title>
+  <title>install required softwares &mdash; SophonInference  documentation</title>
   
 
   
@@ -81,26 +81,19 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../0_products.html">Sophon Products</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../1_crash_course.html">Crash Course</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">install BMNNSDK2 and Sophon-Inference on PC with SC5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="convert.html">convert tensorflow frozen model to bmodel using bmnett</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deploy.html">deploy bmodel on Sophon SC5 using sail</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../0_get_start.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../0_products.html">Sophon Products</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../1_crash_course.html">Crash Course</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">install required softwares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="convert.html">convert tensorflow frozen model to bmodel using bmnett</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deploy.html">deploy bmodel on Sophon SC5 using sail</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../3_introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_introduction.html">Introduction</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../demo/0_preface.html">Preface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../demo/1_resnet50.html">Classification with Resnet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../demo/2_ssd.html">Detection with SSD</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../demo/3_yolov3.html">Detection with Yolov3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../demo/4_mtcnn.html">Detection with MTCNN</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../module/sail.html">SAIL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../module/sail_cpp.html">SAIL C++ API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../module/sail_python.html">SAIL Python API</a></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../1_demo.html">Practical Demos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../2_module.html">API Reference</a></li>
 </ul>
 
             
@@ -146,9 +139,11 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="../../0_get_start.html">Getting Started</a> &raquo;</li>
+        
           <li><a href="../1_crash_course.html">Crash Course</a> &raquo;</li>
         
-      <li>install BMNNSDK2 and Sophon-Inference on PC with SC5</li>
+      <li>install required softwares</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -167,38 +162,48 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="install-bmnnsdk2-and-sophon-inference-on-pc-with-sc5">
-<h1>install BMNNSDK2 and Sophon-Inference on PC with SC5<a class="headerlink" href="#install-bmnnsdk2-and-sophon-inference-on-pc-with-sc5" title="Permalink to this headline">¶</a></h1>
-<p>BMNNSDK2 is the original deep learning development toolkit of Bitmain.
-Sophon-Inference is a submodule of BMNNSDK2 which supplies a bunch of hight level APIs.
-With Sophon-Inference, we can rapidly deploy our deep learning models on Sophon TPU products.</p>
-<p>If you have got the package of BMNNSDK2, follow the steps below for installation.
-We use ${BMNNSDK2} represent the root folder of BMNNSDK2.</p>
-<dl class="docutils">
-<dt><strong>Install libs:</strong></dt>
-<dd><div class="first last highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">BMNNSDK2</span><span class="si">}</span>/scripts/ <span class="o">&amp;&amp;</span> ./install_lib.sh nntc
-</pre></div>
-</div>
-</dd>
-<dt><strong>Install the driver:</strong></dt>
-<dd><div class="first last highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">BMNNSDK2</span><span class="si">}</span>/scripts/ <span class="o">&amp;&amp;</span> sudo ./install_driver_pcie.sh
-</pre></div>
-</div>
-</dd>
-</dl>
-<p><strong>Install bmnett, which can convert tensorflow frozen model to bmodel to run on Sophon TPUs:</strong></p>
+  <div class="section" id="install-required-softwares">
+<h1>install required softwares<a class="headerlink" href="#install-required-softwares" title="Permalink to this headline">¶</a></h1>
+<p>BMNNSDK is the original deep learning development toolkit of Bitmain.
+You can contact us to get it.
+It is a tarfile named as bmnnsdk2-bm1684_vx.x.x.tar.gz.
+The bmnnsdk2 means that it is the second version of bmnnsdk.
+The bm1684 means that it is suitable for the chip of bm1684.
+After you uncompress this tarfile,
+all modules of bmnnsdk will placed in the folder of bmnnsdk2-bm1684_vx.x.x,
+which we are going to use ${BMNNSDK} to represent.</p>
+<p><strong>Installing libs</strong> should only be done one time after you uncompress this tarfile.
+The purpose of this installation is that we will choose the correct version of libs depends on your kernel version.</p>
 <blockquote>
-<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">BMNNSDK2</span><span class="si">}</span>/scripts/ <span class="o">&amp;&amp;</span> <span class="nb">source</span> envsetup_pcie.sh bmnett
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">BMNNSDK</span><span class="si">}</span>/scripts/ <span class="o">&amp;&amp;</span> ./install_lib.sh nntc
 </pre></div>
 </div>
 </div></blockquote>
-<dl class="docutils">
-<dt><strong>Install Sophon-Inference:</strong></dt>
-<dd><div class="first last highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">BMNNSDK2</span><span class="si">}</span>/exsamples/sail/python3/x86/ <span class="o">&amp;&amp;</span> pip3 install sophon-2.0.2-py3-none-any.whl --user
+<p><strong>Installing driver</strong> also should only be done one time.
+After installing the driver, you can see “bmdev-ctl” and “bm-sophon0” under your “/dev/” path.</p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">BMNNSDK</span><span class="si">}</span>/scripts/ <span class="o">&amp;&amp;</span> sudo ./install_driver_pcie.sh
+
+<span class="c1"># check if installing successfully</span>
+ls /dev/ <span class="p">|</span> grep <span class="s2">&quot;bm&quot;</span>
 </pre></div>
 </div>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>Installing bmnett and Configuring environment</strong> should be done as long as you open a new terminal.
+Bmnett is a python module and python3.5 is recommanded.</p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">BMNNSDK</span><span class="si">}</span>/scripts/ <span class="o">&amp;&amp;</span> <span class="nb">source</span> envsetup_pcie.sh bmnett
+</pre></div>
+</div>
+</div></blockquote>
+<p>Sophon-Inference is a submodule of BMNNSDK which supplies a bunch of hight level APIs.
+With Sophon-Inference, we can rapidly deploy our deep learning models on Sophon TPU products.
+<strong>Install Sophon-Inference:</strong></p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">BMNNSDK</span><span class="si">}</span>/exsamples/sail/python3/x86/ <span class="o">&amp;&amp;</span> pip3 install sophon-2.0.2-py3-none-any.whl --user
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 
 
