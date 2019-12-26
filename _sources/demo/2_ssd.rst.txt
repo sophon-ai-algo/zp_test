@@ -1,14 +1,11 @@
 Detection with SSD
 ==================
 
-In this Demo, we convert a ssd300-vgg16 trained by Caffe to bmodel for image classfication, 
-while both fp32 bmodel and int8 bmodel are used. We implemented five cases.
+In this Demo, we use ssd300-vgg16 to detect objects in both images and videos. 
+The bmodels used in this demo are already converted from official ssd300-vgg16, to both fp32 and int8 data type.
 
-Among the first four cases, we use different decoding and preprocessing libs.
-Except opencv, which is the public released version of opencv, 
-other libs like bm-opencv, bm-ffmpeg and bmcv are all bitmain versions,
-which exploiting TPU to decode/process videos/images.
-
+The main differences among these cases are decoder and preprocessor we choosen, except case 2, 
+which is just the 4-N mode (batch_size is the multiples of 4) of case 1.
 
 +----+-------------+-----------+--------------+-----------+--------------+--------+--------------+------------+-------------+
 | ID | Input       | Decoder   | Preprocessor | Data Type | Model        | Mode   | Model Number | Batch Size | Multi-Thread|

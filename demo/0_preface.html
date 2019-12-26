@@ -36,7 +36,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Classification with Resnet" href="1_resnet50.html" />
-    <link rel="prev" title="Sophon Inference Installation" href="../get_start/intros/install.html" /> 
+    <link rel="prev" title="Practical Demos" href="../1_demo.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -80,26 +80,21 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../get_start/0_products.html">Sophon Products</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_start/1_crash_course.html">Crash Course</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_start/3_introduction.html">Introduction</a></li>
-</ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Preface</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#the-difference-among-cases-in-a-demo">The difference among cases in a demo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#return-values">Return Values</a></li>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../0_get_start.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../1_demo.html">Practical Demos</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Preface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#demo-brief">Demo Brief</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#return-values">Return Values</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="1_resnet50.html">Classification with Resnet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2_ssd.html">Detection with SSD</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_yolov3.html">Detection with Yolov3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_mtcnn.html">Detection with MTCNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_resnet50.html">Classification with Resnet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_ssd.html">Detection with SSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_yolov3.html">Detection with Yolov3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_mtcnn.html">Detection with MTCNN</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../module/sail.html">SAIL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../module/sail_cpp.html">SAIL C++ API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../module/sail_python.html">SAIL Python API</a></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../2_module.html">API Reference</a></li>
 </ul>
 
             
@@ -145,6 +140,8 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="../1_demo.html">Practical Demos</a> &raquo;</li>
+        
       <li>Preface</li>
     
     
@@ -166,27 +163,213 @@
             
   <div class="section" id="preface">
 <h1>Preface<a class="headerlink" href="#preface" title="Permalink to this headline">¶</a></h1>
-<p>We prepared several demos to let you get familiar with Sophon-Inference more quickly.
-They are a classification demo(resnet-50) and three detection demos(ssd, yolov3, mtcnn).
-For each demo, we implemented different cases to adapt to multiple applications.</p>
-<div class="section" id="the-difference-among-cases-in-a-demo">
-<h2>The difference among cases in a demo<a class="headerlink" href="#the-difference-among-cases-in-a-demo" title="Permalink to this headline">¶</a></h2>
-<p>Each case differed from others among the parameters below.</p>
-<p><em>ID:</em> the number of the case in this demo.</p>
-<p><em>Input:</em> input date type, image or video.</p>
-<p><em>Decoder:</em> libs for decoding the input.
+<div class="section" id="demo-brief">
+<h2>Demo Brief<a class="headerlink" href="#demo-brief" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="9%" />
+<col width="8%" />
+<col width="10%" />
+<col width="8%" />
+<col width="10%" />
+<col width="7%" />
+<col width="10%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Binary</th>
+<th class="head">Input</th>
+<th class="head">Decoder</th>
+<th class="head">Preprocessor</th>
+<th class="head">Data Type</th>
+<th class="head">Model</th>
+<th class="head">Mode</th>
+<th class="head">Model Number</th>
+<th class="head">TPU Number</th>
+<th class="head">Batch Size</th>
+<th class="head">Multi-Thread</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cls-resnet-0</td>
+<td>image</td>
+<td>opencv</td>
+<td>opencv</td>
+<td>fp32 int8</td>
+<td>resnet-50</td>
+<td>static</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>cls-resnet-1</td>
+<td>image</td>
+<td>opencv</td>
+<td>opencv</td>
+<td>fp32 int8</td>
+<td>resnet-50</td>
+<td>static</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>cls-resnet-2</td>
+<td>image</td>
+<td>opencv</td>
+<td>opencv</td>
+<td>fp32 int8</td>
+<td>resnet-50</td>
+<td>static</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td>cls-resnet-3</td>
+<td>image</td>
+<td>opencv</td>
+<td>opencv</td>
+<td>fp32 int8</td>
+<td>resnet-50</td>
+<td>static</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>det-ssd-0</td>
+<td>video image</td>
+<td>opencv</td>
+<td>opencv</td>
+<td>fp32 int8</td>
+<td>ssd300-vgg16</td>
+<td>static</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>det-ssd_1</td>
+<td>video image</td>
+<td>bm-ffmpeg</td>
+<td>bmcv</td>
+<td>fp32 int8</td>
+<td>ssd300-vgg16</td>
+<td>static</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>N</td>
+</tr>
+<tr class="row-even"><td>det-ssd-2</td>
+<td>video image</td>
+<td>bm-ffmpeg</td>
+<td>bmcv</td>
+<td>fp32 int8</td>
+<td>ssd300-vgg16</td>
+<td>static</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>det-ssd-3</td>
+<td>video image</td>
+<td>bm-opencv</td>
+<td>bm-opencv</td>
+<td>fp32 int8</td>
+<td>ssd300-vgg16</td>
+<td>static</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>N</td>
+</tr>
+<tr class="row-even"><td>det-ssd-4</td>
+<td>video image</td>
+<td>bm-opencv</td>
+<td>bmcv</td>
+<td>fp32 int8</td>
+<td>ssd300-vgg16</td>
+<td>static</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>N</td>
+</tr>
+<tr class="row-odd"><td>det-yolov3-0</td>
+<td>multi-video</td>
+<td>opencv</td>
+<td>opencv</td>
+<td>fp32 int8</td>
+<td>yolov3</td>
+<td>static</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>Y</td>
+</tr>
+<tr class="row-even"><td>det-yolov3-1</td>
+<td>multi-video</td>
+<td>bm-ffmpeg</td>
+<td>bmcv</td>
+<td>fp32 int8</td>
+<td>yolov3</td>
+<td>static</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>Y</td>
+</tr>
+<tr class="row-odd"><td>det-mtcnn</td>
+<td>image</td>
+<td>opencv</td>
+<td>opencv</td>
+<td>fp32</td>
+<td>MTCNN</td>
+<td>dynamic</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+<p>As the above table shown,
+we prepared several demos to let you get familiar with Sophon-Inference more quickly.
+Both c++ and python are supported.
+For each demo, we implemented different cases to adapt to multiple applications.
+we have four kinds of demos by now:</p>
+<blockquote>
+<div><p><strong>cls_resnet(classification with resnet50)</strong></p>
+<p><strong>det_ssd(detection with ssd300-vgg16)</strong></p>
+<p><strong>det_yolov3(detection with yolov3)</strong></p>
+<p><strong>det_mtcnn(detection with mtcnn)</strong></p>
+</div></blockquote>
+<p>The meanings of properties of the cases are explained as follows:</p>
+<blockquote>
+<div><p><strong>Binary:</strong> the name of binary file(c++) or script(python) of the case.</p>
+<p><strong>Input:</strong> input date type, image or video.</p>
+<p><strong>Decoder:</strong> libs for decoding the input.
 “opencv” is the public release version of opencv which using CPU for decoding.
 “bm-opencv” and “ffmpeg” are the bitmain versions of opencv and ffmpeg which using VPU for decoding.</p>
-<p><em>Preprocessor:</em> libs for processing image or tensor.
+<p><strong>Preprocessor:</strong> libs for processing image or tensor.
 “opencv” is the public release version of opencv which using CPU for caculating.
 “bm-opencv” and “bmcv” are the bitmain versions for processing image or tensor.</p>
-<p><em>Data Type:</em> data type of the bmodel to be used, fp32 or int8.</p>
-<p><em>Model:</em> model name.</p>
-<p><em>Mode:</em> two modes, static mean input tensor shapes of bmodel are unchanged,
+<p><strong>Data Type:</strong> data type of the bmodel to be used, fp32 or int8.</p>
+<p><strong>Model:</strong> the name of deep learning model used in this case.</p>
+<p><strong>Mode:</strong> two modes, static mean input tensor shapes of bmodel are unchanged,
 while dynamic means input tensor shapes of bmodel can be changed.</p>
-<p><em>Model Number:</em> multiple models are supported at the same time.</p>
-<p><em>TPU Number:</em> multiple TPUs are supported at the same time.</p>
-<p><em>Multi Thread:</em>: multiple thread are supported at the same time.</p>
+<p><strong>Model Number:</strong> how many models are supported concurrently in this case.</p>
+<p><strong>TPU Number:</strong> how many TPUs are supported at the same time.</p>
+<p><strong>Batch Size:</strong> the batchsize of the bmodel we used.</p>
+<p><strong>Multi Thread:</strong>: how many threads are supported at the same time.</p>
+</div></blockquote>
 </div>
 <div class="section" id="return-values">
 <h2>Return Values<a class="headerlink" href="#return-values" title="Permalink to this headline">¶</a></h2>
@@ -227,7 +410,7 @@ while dynamic means input tensor shapes of bmodel can be changed.</p>
         <a href="1_resnet50.html" class="btn btn-neutral float-right" title="Classification with Resnet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../get_start/intros/install.html" class="btn btn-neutral float-left" title="Sophon Inference Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../1_demo.html" class="btn btn-neutral float-left" title="Practical Demos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

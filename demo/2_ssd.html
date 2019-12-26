@@ -80,27 +80,22 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../get_start/0_products.html">Sophon Products</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_start/1_crash_course.html">Crash Course</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../get_start/3_introduction.html">Introduction</a></li>
-</ul>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="0_preface.html">Preface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1_resnet50.html">Classification with Resnet</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Detection with SSD</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ssd_cases/usage.html">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ssd_cases/cpp.html">C++ Codes Explanation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ssd_cases/python.html">Python Codes Explanation</a></li>
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../0_get_start.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../1_demo.html">Practical Demos</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="0_preface.html">Preface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_resnet50.html">Classification with Resnet</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Detection with SSD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ssd_cases/usage.html">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ssd_cases/cpp.html">C++ Codes Explanation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ssd_cases/python.html">Python Codes Explanation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="3_yolov3.html">Detection with Yolov3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_mtcnn.html">Detection with MTCNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_yolov3.html">Detection with Yolov3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_mtcnn.html">Detection with MTCNN</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../module/sail.html">SAIL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../module/sail_cpp.html">SAIL C++ API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../module/sail_python.html">SAIL Python API</a></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../2_module.html">API Reference</a></li>
 </ul>
 
             
@@ -146,6 +141,8 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="../1_demo.html">Practical Demos</a> &raquo;</li>
+        
       <li>Detection with SSD</li>
     
     
@@ -167,12 +164,10 @@
             
   <div class="section" id="detection-with-ssd">
 <h1>Detection with SSD<a class="headerlink" href="#detection-with-ssd" title="Permalink to this headline">¶</a></h1>
-<p>In this Demo, we convert a ssd300-vgg16 trained by Caffe to bmodel for image classfication,
-while both fp32 bmodel and int8 bmodel are used. We implemented five cases.</p>
-<p>Among the first four cases, we use different decoding and preprocessing libs.
-Except opencv, which is the public released version of opencv,
-other libs like bm-opencv, bm-ffmpeg and bmcv are all bitmain versions,
-which exploiting TPU to decode/process videos/images.</p>
+<p>In this Demo, we use ssd300-vgg16 to detect objects in both images and videos.
+The bmodels used in this demo are already converted from official ssd300-vgg16, to both fp32 and int8 data type.</p>
+<p>The main differences among these cases are decoder and preprocessor we choosen, except case 2,
+which is just the 4-N mode (batch_size is the multiples of 4) of case 1.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="4%" />
